@@ -19,6 +19,7 @@
 		FD36704D29FAD6D1002E5AED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD36704B29FAD6D1002E5AED /* LaunchScreen.storyboard */; };
 		FD36705829FAD6D1002E5AED /* Ios_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36705729FAD6D1002E5AED /* Ios_BooksTests.swift */; };
 		FD36706329FAD6D1002E5AED /* Ios_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36706229FAD6D1002E5AED /* Ios_BooksUITests.swift */; };
+		FDA1ECE529FDB28B00B9A9FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDA1ECE429FDB28A00B9A9FB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +64,7 @@
 		FD36705E29FAD6D1002E5AED /* Ios BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ios BooksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD36706229FAD6D1002E5AED /* Ios_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ios_BooksUITests.swift; sourceTree = "<group>"; };
 		FD36706429FAD6D1002E5AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD36707429FAD832002E5AED /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FDA1ECE429FDB28A00B9A9FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				FD36703C29FAD6CF002E5AED /* Ios Books */,
+				FDA1ECE429FDB28A00B9A9FB /* GoogleService-Info.plist */,
 				FD36705629FAD6D1002E5AED /* Ios BooksTests */,
 				FD36706129FAD6D1002E5AED /* Ios BooksUITests */,
 				FD36703B29FAD6CE002E5AED /* Products */,
@@ -144,7 +146,6 @@
 			children = (
 				FD36707129FAD730002E5AED /* Models */,
 				FD36704329FAD6CF002E5AED /* Main.storyboard */,
-				FD36707429FAD832002E5AED /* GoogleService-Info.plist */,
 				FD36707029FAD708002E5AED /* System files */,
 			);
 			path = "Ios Books";
@@ -299,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD36704D29FAD6D1002E5AED /* LaunchScreen.storyboard in Resources */,
+				FDA1ECE529FDB28B00B9A9FB /* GoogleService-Info.plist in Resources */,
 				FD36704A29FAD6D1002E5AED /* Assets.xcassets in Resources */,
 				FD36704529FAD6CF002E5AED /* Main.storyboard in Resources */,
 			);
