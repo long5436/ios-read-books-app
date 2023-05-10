@@ -4,41 +4,10 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--The loai-->
-        <scene sceneID="n7e-h2-cda">
-            <objects>
-                <viewController id="bbR-cc-YE3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nkx-I6-Lzx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="iMk-Pc-ey0"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="The loai" image="rectangle.grid.2x2.fill" catalog="system" id="Dit-XZ-RfJ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="njQ-9R-ulW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-22" y="384"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="pCi-mQ-mfW">
-            <objects>
-                <viewController id="jbV-dE-eEs" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ndv-xo-KVh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="RWF-OC-0LP"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="TjS-9i-jaz"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xBL-6i-Ywp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="908" y="-2"/>
-        </scene>
         <!--Trang chu-->
         <scene sceneID="gdD-TQ-uj3">
             <objects>
@@ -47,20 +16,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="" placeholder="Tim kiem sach" translatesAutoresizingMaskIntoConstraints="NO" id="bUI-PX-YOV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-pK-uM9">
+                                <rect key="frame" x="20" y="98" width="374" height="715"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jrD-M1-hVT">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ttP-ZN-NQ7" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fzb-cY-Jw7">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-bC-ygC">
+                                                    <rect key="frame" x="4" y="15" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookTitleCell" destination="fzb-cY-Jw7" id="khk-ja-RuI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="SK1-iN-h7S"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Trang chu" image="book.fill" catalog="system" id="1PM-Bv-r2o"/>
+                    <tabBarItem key="tabBarItem" title="Trang chu" image="house.fill" catalog="system" id="1PM-Bv-r2o"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbJ-uX-4bg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.188405797101453" y="-457.36607142857139"/>
+            <point key="canvasLocation" x="-114.49275362318842" y="-310.04464285714283"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZKR-Xd-0Rk">
@@ -73,8 +70,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="OXo-Ys-6bd" kind="relationship" relationship="viewControllers" id="8SE-az-dgc"/>
-                        <segue destination="bbR-cc-YE3" kind="relationship" relationship="viewControllers" id="xPu-57-aFY"/>
-                        <segue destination="jbV-dE-eEs" kind="relationship" relationship="viewControllers" id="4GA-S7-Htl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qas-6t-4nz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -83,7 +78,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="book.fill" catalog="system" width="64" height="50"/>
-        <image name="rectangle.grid.2x2.fill" catalog="system" width="64" height="48"/>
+        <image name="house.fill" catalog="system" width="64" height="52"/>
     </resources>
 </document>
