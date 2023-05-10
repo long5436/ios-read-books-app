@@ -2,18 +2,26 @@
 //  BookCollectionViewCell.swift
 //  Ios Books
 //
-//  Created by Long on 5/8/23.
+//  Created by Long on 5/9/23.
 //  Copyright © 2023 Long. All rights reserved.
 //
 
 import UIKit
 
 class BookCollectionViewCell: UICollectionViewCell {
-    //MARK: Properties
-    @IBOutlet weak var bookTitleCell: UIView!
+
+    @IBOutlet weak var textLabel: UILabel!
     
-    //MARK: Contructor
-    init?(name: String) {
-        
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
+    
+    func setData(text: String) {
+        if let label = textLabel {
+            label.text = text
+        }
+    }
+
 }

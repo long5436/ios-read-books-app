@@ -21,8 +21,8 @@
 		FD36706329FAD6D1002E5AED /* Ios_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36706229FAD6D1002E5AED /* Ios_BooksUITests.swift */; };
 		FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B99FD2A082BD1005C5B7E /* Book.swift */; };
 		FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */; };
-		FDD8B5332A0840AD000B7DE5 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8B5322A0840AD000B7DE5 /* BookCollectionViewController.swift */; };
-		FDD8B5362A0841C2000B7DE5 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8B5352A0841C2000B7DE5 /* BookCollectionViewCell.swift */; };
+		FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */; };
+		FDA2A7ED2A09830100701F4F /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDA2A7EB2A09830100701F4F /* BookCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +69,8 @@
 		FD36706429FAD6D1002E5AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD6B99FD2A082BD1005C5B7E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FDD8B5322A0840AD000B7DE5 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
-		FDD8B5352A0841C2000B7DE5 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		FDA2A7EB2A09830100701F4F /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				FD36704129FAD6CF002E5AED /* HomeController.swift */,
-				FDD8B5322A0840AD000B7DE5 /* BookCollectionViewController.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -210,7 +209,8 @@
 		FDD8B5342A08419F000B7DE5 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
-				FDD8B5352A0841C2000B7DE5 /* BookCollectionViewCell.swift */,
+				FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */,
+				FDA2A7EB2A09830100701F4F /* BookCollectionViewCell.xib */,
 			);
 			name = CollectionCell;
 			sourceTree = "<group>";
@@ -328,6 +328,7 @@
 				FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */,
 				FD36704A29FAD6D1002E5AED /* Assets.xcassets in Resources */,
 				FD36704529FAD6CF002E5AED /* Main.storyboard in Resources */,
+				FDA2A7ED2A09830100701F4F /* BookCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,9 +460,8 @@
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
 				FD36704829FAD6CF002E5AED /* Ios_Books.xcdatamodeld in Sources */,
 				FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */,
-				FDD8B5362A0841C2000B7DE5 /* BookCollectionViewCell.swift in Sources */,
+				FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */,
 				FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */,
-				FDD8B5332A0840AD000B7DE5 /* BookCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +676,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Ios BooksTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,7 +698,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Ios BooksTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
