@@ -9,19 +9,26 @@
 import UIKit
 
 class BookCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var textLabel: UILabel!
+    //MARK: Properties
+    @IBOutlet weak var bookName: UILabel!
+    @IBOutlet weak var bookImage: UIImageView!
     
+    var bookImageUrl: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func setData(text: String) {
-        if let label = textLabel {
-            label.text = text
+    // khoi tao du lieu cho cell sach
+    func setData(book: Book) {
+        if let label = bookName {
+            label.text = book.getName()
+        }
+        
+        if let image = bookImage {
+            image.getImageFromCach(imageName: book.getPhoto(), uiImage: image)
+            
         }
     }
-
 }
