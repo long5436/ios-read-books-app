@@ -22,10 +22,12 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     var limitBookQuery: Int = 9
     var arrBook = [Book]()
+    var arrBookBackup = [Book]()
     var cellMarginSize: Float = 5.0
     var isCallApi: Bool = false
     var documentLast: Any?
     let booksRef = Firestore.firestore().collection("books")
+    var searching: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,17 +50,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
-    //MARK: TextField 's Delegation Functions (Dinh nghia cac ham uy quyen cho doi tuong Search
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        print("Call to return")
-    ////        edtMealName.resignFirstResponder() // an ban phim
-    //        return true
-    //    }
-    //
-    //    func textFieldDidEndEditing(_ textField: UITextField) {
-    ////        print("\(edtMealName.text!)")
-    //    }
-    
     
     //MARK: Hien thuc ham uy quyen cho searchbar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -70,7 +61,19 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            if searching {
+                // tat trang thai dang tim kiem
+                searching = false
+                // lay lai mang sach ban dau
+                arrBook = Array(arrBookBackup)
+                // load lai du lieu collection
+                self.bookCollectionView.reloadData()
+                
+            }
+        }
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -103,57 +106,77 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     //     Lay du lieu cac cuon sach tu firebase theo tu khoa tim kiem
     
     func searchBooks() {
-       if let searchText = searchbar.text {
-        print("Tu khoa la: \(searchText)")
+        // gan trang thai dang tim kiem
         
-         let query = self.booksRef
-                        .order(by: "created", descending: true)
-                        .whereField("name", arrayContains: searchText)
-                        .limit(to: limitBookQuery)
+        
+        if let searchText = searchbar.text {
+            print("Tu khoa la: \(searchText)")
+            
+            // luu lai mang sach
+            if !searching {
+                arrBookBackup = Array(arrBook)
+                searching = true
+            }
+            
+            
+            let query = self.booksRef
+                .order(by: "created", descending: true)
+                .whereField("search_key", arrayContains: searchText)
+                .limit(to: limitBookQuery)
+            
+            var resultBooks = [Book]()
+            
+            query.getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching documents: \(error.localizedDescription)")
+                    self.arrBook = Array(resultBooks)
+                    self.bookCollectionView.reloadData()
+                    return
+                }
+                
+                guard let snapshot = snapshot, !snapshot.isEmpty else {
+                    print("No books found matching the search criteria")
+                    self.arrBook = Array(resultBooks)
+                    self.bookCollectionView.reloadData()
+                    return
+                }
+                
+                
+                
+                for document in snapshot.documents {
+                    let data = document.data()
                     
-                    query.getDocuments { (snapshot, error) in
-                        if let error = error {
-                            print("Error fetching documents: \(error.localizedDescription)")
-                            return
-                        }
-                        
-                        guard let snapshot = snapshot, !snapshot.isEmpty else {
-                            print("No books found matching the search criteria")
-                            return
-                        }
-                        
-                        var resultBooks = [Book]()
-                        
-                        for document in snapshot.documents {
-                            let data = document.data()
-                            
-                            guard
-                                let categoryId = data["cate_id"] as? String,
-                                let name = data["name"] as? String,
-                                let photo = data["photo"] as? String,
-                                let about = data["about"] as? String
-                                else {
-                                    continue
-                            }
-                            
-                            let newBook = Book(
-                                bookId: document.documentID,
-                                categoryId: categoryId,
-                                name: name,
-                                photo: photo,
-                                about: about
-                            )
-                            
-                            if let newBook = newBook {
-                                resultBooks.append(newBook)
-                            }
-                        }
-                        
-                        print("Total number of books found: \(resultBooks.count)")
+                    guard
+                        let categoryId = data["cate_id"] as? String,
+                        let name = data["name"] as? String,
+                        let photo = data["photo"] as? String,
+                        let about = data["about"] as? String
+                        else {
+                            continue
                     }
+                    
+                    let newBook = Book(
+                        bookId: document.documentID,
+                        categoryId: categoryId,
+                        name: name,
+                        photo: photo,
+                        about: about
+                    )
+                    
+                    if let newBook = newBook {
+                        resultBooks.append(newBook)
+                    }
+                }
+                
+                print("Total number of books found: \(resultBooks.count)")
+                self.arrBook = Array(resultBooks)
+                self.bookCollectionView.reloadData()
+               
+                
+            }
+            
+           
         }
-        
-        
     }
     
     
@@ -234,6 +257,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             
             // an ban phim
             searchbar.resignFirstResponder()
+            
         }
     }
 }

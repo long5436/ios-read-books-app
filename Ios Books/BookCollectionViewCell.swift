@@ -27,50 +27,8 @@ class BookCollectionViewCell: UICollectionViewCell {
         }
         
         if let image = bookImage {
-            image.getLinkImageFromFirebase(path: book.getPhoto()) { (url) in
-                if let url = url {
-                    //                    print("url la:  \(url)")
-                    //                    self.bookImageUrl = url
-                    
-                    if let url = URL(string: url) {
-                        self.downloadImage(from: url)
-                    }
-                }
-            }
+            image.getImageFromCach(imageName: book.getPhoto(), uiImage: image)
+            
         }
-        
-//        print("da vo day")
     }
-    
-    func downloadImage(from url: URL) {
-        // Create a Data object to hold the downloaded image data.
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            // Check for errors when downloading the image.
-            if let error = error {
-                print("Error downloading image: \(error.localizedDescription)")
-                return
-            }
-            
-            // Check that there is image data.
-            guard let data = data else {
-//                print("No image data received.")
-                return
-            }
-            
-            // Create an image object from the downloaded data.
-            guard let image = UIImage(data: data) else {
-//                print("Could not create image from data.")
-                return
-            }
-            
-            // Display the image on the image view on the main thread.
-            DispatchQueue.main.async {
-                //                print(image)
-                if let bookImage = self.bookImage {
-                    bookImage.image = image
-                }
-            }
-        }.resume()
-    }
-    
 }
