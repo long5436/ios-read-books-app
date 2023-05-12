@@ -16,52 +16,97 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-pK-uM9">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jrD-M1-hVT">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ttP-ZN-NQ7" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fzb-cY-Jw7">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-bC-ygC">
-                                                    <rect key="frame" x="4" y="15" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="bookTitleCell" destination="fzb-cY-Jw7" id="khk-ja-RuI"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-kD-cRt">
+                                <rect key="frame" x="20" y="64" width="374" height="749"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sách mới" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0a-I5-60D">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="5yY-L4-qXh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Tìm kiếm sách" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0L-sZ-URB">
+                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Hhd-hg-SO0"/>
+                                        </constraints>
+                                        <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-pK-uM9">
+                                        <rect key="frame" x="0.0" y="110" width="374" height="639"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jrD-M1-hVT">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ttP-ZN-NQ7" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fzb-cY-Jw7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-bC-ygC">
+                                                            <rect key="frame" x="4" y="15" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="PeE-bC-ygC" firstAttribute="centerX" secondItem="fzb-cY-Jw7" secondAttribute="centerX" id="0me-Mn-nxn"/>
+                                                        <constraint firstItem="PeE-bC-ygC" firstAttribute="centerY" secondItem="fzb-cY-Jw7" secondAttribute="centerY" id="s6Q-cD-cQw"/>
+                                                        <constraint firstItem="PeE-bC-ygC" firstAttribute="top" secondItem="fzb-cY-Jw7" secondAttribute="top" constant="15" id="ylD-lr-W8J"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="bookTitleCell" destination="fzb-cY-Jw7" id="khk-ja-RuI"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dh7-pK-uM9" secondAttribute="bottom" id="Bh1-XJ-nGC"/>
+                                    <constraint firstAttribute="trailing" secondItem="q0a-I5-60D" secondAttribute="trailing" id="Cse-eN-Lqy"/>
+                                    <constraint firstItem="q0a-I5-60D" firstAttribute="leading" secondItem="P2v-kD-cRt" secondAttribute="leading" id="M4Y-Vz-2sX"/>
+                                    <constraint firstItem="b0L-sZ-URB" firstAttribute="leading" secondItem="P2v-kD-cRt" secondAttribute="leading" id="NoX-JJ-2D6"/>
+                                    <constraint firstAttribute="trailing" secondItem="b0L-sZ-URB" secondAttribute="trailing" id="TRc-br-Sv1"/>
+                                    <constraint firstItem="dh7-pK-uM9" firstAttribute="leading" secondItem="P2v-kD-cRt" secondAttribute="leading" id="wK6-Kx-mD8"/>
+                                    <constraint firstAttribute="trailing" secondItem="dh7-pK-uM9" secondAttribute="trailing" id="xop-Od-jNX"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dh7-pK-uM9" firstAttribute="bottom" secondItem="SK1-iN-h7S" secondAttribute="bottom" id="5SS-bw-MoS"/>
-                            <constraint firstItem="SK1-iN-h7S" firstAttribute="trailing" secondItem="dh7-pK-uM9" secondAttribute="trailing" id="Wfd-lf-Kac"/>
-                            <constraint firstItem="dh7-pK-uM9" firstAttribute="top" secondItem="SK1-iN-h7S" secondAttribute="top" id="jpj-OI-f0m"/>
-                            <constraint firstItem="dh7-pK-uM9" firstAttribute="top" secondItem="SK1-iN-h7S" secondAttribute="top" id="mq4-8Z-d7G"/>
-                            <constraint firstItem="dh7-pK-uM9" firstAttribute="leading" secondItem="SK1-iN-h7S" secondAttribute="leading" id="q0z-nJ-oKz"/>
+                            <constraint firstItem="P2v-kD-cRt" firstAttribute="top" secondItem="SK1-iN-h7S" secondAttribute="top" constant="20" id="1pw-oh-9XF"/>
+                            <constraint firstItem="SK1-iN-h7S" firstAttribute="trailing" secondItem="P2v-kD-cRt" secondAttribute="trailing" constant="20" id="5Zr-MP-4re"/>
+                            <constraint firstItem="SK1-iN-h7S" firstAttribute="bottom" secondItem="P2v-kD-cRt" secondAttribute="bottom" id="glY-KO-kI4"/>
+                            <constraint firstItem="P2v-kD-cRt" firstAttribute="top" secondItem="SK1-iN-h7S" secondAttribute="top" id="mwl-8c-h9X"/>
+                            <constraint firstItem="P2v-kD-cRt" firstAttribute="leading" secondItem="SK1-iN-h7S" secondAttribute="leading" constant="20" id="y27-dM-RwC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SK1-iN-h7S"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mwl-8c-h9X"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Trang chu" image="house.fill" catalog="system" id="1PM-Bv-r2o"/>
                     <connections>
                         <outlet property="bookCollectionView" destination="dh7-pK-uM9" id="9Et-nW-u2J"/>
+                        <outlet property="searchbar" destination="b0L-sZ-URB" id="Dqm-8G-5rc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbJ-uX-4bg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

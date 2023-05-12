@@ -14,6 +14,7 @@
 		5D2F5A932FB891F9C262CA42 /* Pods_Ios_BooksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */; };
 		62A2678778435371857628DE /* Pods_Ios_Books_Ios_BooksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08CDCF6DA5D832CC7DEA724 /* Pods_Ios_Books_Ios_BooksUITests.framework */; };
 		8768476CE4020D9E93E381FD /* Pods_Ios_Books.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB185D08C1C12C04481264E /* Pods_Ios_Books.framework */; };
+		FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1967B82A0BA535009007A2 /* UIImageView.swift */; };
 		FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703D29FAD6CF002E5AED /* AppDelegate.swift */; };
 		FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703F29FAD6CF002E5AED /* SceneDelegate.swift */; };
 		FD36704229FAD6CF002E5AED /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36704129FAD6CF002E5AED /* HomeController.swift */; };
@@ -60,6 +61,7 @@
 		D08CDCF6DA5D832CC7DEA724 /* Pods_Ios_Books_Ios_BooksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ios_Books_Ios_BooksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16C831B71A0657D8BCFA748 /* Pods-Ios BooksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ios BooksTests.debug.xcconfig"; path = "Target Support Files/Pods-Ios BooksTests/Pods-Ios BooksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ios_BooksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD1967B82A0BA535009007A2 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		FD36703A29FAD6CE002E5AED /* Ios Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ios Books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD36703D29FAD6CF002E5AED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD36703F29FAD6CF002E5AED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				1C07185F2A0C7CC800677845 /* TableViewCel */,
+				FD903D592A0BA373009BB96E /* UIImageView */,
 				FDD8B5342A08419F000B7DE5 /* CollectionCell */,
 				FD6B99FC2A082BB7005C5B7E /* DataModels */,
 				FD36707129FAD730002E5AED /* Models */,
@@ -224,6 +227,14 @@
 				1C07185D2A0C7B5A00677845 /* Category.swift */,
 			);
 			name = DataModels;
+			sourceTree = "<group>";
+		};
+		FD903D592A0BA373009BB96E /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				FD1967B82A0BA535009007A2 /* UIImageView.swift */,
+			);
+			name = UIImageView;
 			sourceTree = "<group>";
 		};
 		FDD8B5342A08419F000B7DE5 /* CollectionCell */ = {
@@ -480,6 +491,7 @@
 				FD36704229FAD6CF002E5AED /* HomeController.swift in Sources */,
 				1C0718612A0C7D8200677845 /* TableViewCell.swift in Sources */,
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
+				FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */,
 				FD36704829FAD6CF002E5AED /* Ios_Books.xcdatamodeld in Sources */,
 				FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */,
 				1C0718632A0C7E9900677845 /* CategoryTableViewController.swift in Sources */,
