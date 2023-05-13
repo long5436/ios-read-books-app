@@ -214,9 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				FD36704129FAD6CF002E5AED /* HomeController.swift */,
+				FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */,
 				1C0718622A0C7E9900677845 /* CategoryTableViewController.swift */,
 				1C7287ED2A0D162A0058745C /* CategoryViewController.swift */,
-				FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";

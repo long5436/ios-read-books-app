@@ -30,6 +30,8 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     let booksRef = Firestore.firestore().collection("books")
     var searching: Bool = false
     let bookCellReuseIdentifier: String = "BookCell"
+    let segueAboutViewIdentifier: String = "HomeToAbout"
+    var bookSelected: Book!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +42,8 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         bookCollectionView.dataSource = self
         searchbar.delegate = self
         
-//        let nib =  UINib(nibName: "BookCollectionViewCell", bundle: nil)
-//        bookCollectionView.register(nib, forCellWithReuseIdentifier: "BookCell")
+        //        let nib =  UINib(nibName: "BookCollectionViewCell", bundle: nil)
+        //        bookCollectionView.register(nib, forCellWithReuseIdentifier: "BookCell")
         
         // Dang ky layout grid view
         self.setGridView()
@@ -104,6 +106,28 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         //        print("M book la: \(self.arrBook.count)")
         return cell
     }
+    
+    // goi khi chon 1 cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print("index mang la: \(indexPath[1])")
+        // gan du lieu sach vua chon de chuyen sang man hinh about
+        self.bookSelected = arrBook[indexPath[1]]
+        // chuyen man hinh sang man hinh about
+        performSegue(withIdentifier: segueAboutViewIdentifier, sender: indexPath)
+        
+    }
+    
+    // MARK: An thanh dieu huong o man hinh dau tien
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     
     
     //     Lay du lieu cac cuon sach tu firebase theo tu khoa tim kiem
@@ -174,11 +198,11 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
                 print("Total number of books found: \(resultBooks.count)")
                 self.arrBook = Array(resultBooks)
                 self.bookCollectionView.reloadData()
-               
+                
                 
             }
             
-           
+            
         }
     }
     
@@ -263,6 +287,22 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             
         }
     }
+    
+    
+    // Thay doi noi dung nut back o man hinh tiep theo
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Trở về"
+        navigationItem.backBarButtonItem = backItem
+        
+        // Lay Destination
+        if let destination = segue.destination as? AboutViewController {
+            destination.book = bookSelected
+        }
+    }
+    
+    
+    
 }
 
 extension HomeController: UICollectionViewDelegateFlowLayout {
