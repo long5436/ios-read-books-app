@@ -27,7 +27,7 @@
 		FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B99FD2A082BD1005C5B7E /* Book.swift */; };
 		FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */; };
 		FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */; };
-		FDA2A7ED2A09830100701F4F /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDA2A7EB2A09830100701F4F /* BookCollectionViewCell.xib */; };
+		FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +80,7 @@
 		FD6B99FD2A082BD1005C5B7E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
-		FDA2A7EB2A09830100701F4F /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
+		FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				FD36704129FAD6CF002E5AED /* HomeController.swift */,
+				FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */,
 				1C0718622A0C7E9900677845 /* CategoryTableViewController.swift */,
 				1C7287ED2A0D162A0058745C /* CategoryViewController.swift */,
 			);
@@ -241,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */,
-				FDA2A7EB2A09830100701F4F /* BookCollectionViewCell.xib */,
 			);
 			name = CollectionCell;
 			sourceTree = "<group>";
@@ -359,7 +359,6 @@
 				FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */,
 				FD36704A29FAD6D1002E5AED /* Assets.xcassets in Resources */,
 				FD36704529FAD6CF002E5AED /* Main.storyboard in Resources */,
-				FDA2A7ED2A09830100701F4F /* BookCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +492,7 @@
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
 				FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */,
 				FD36704829FAD6CF002E5AED /* Ios_Books.xcdatamodeld in Sources */,
+				FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */,
 				FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */,
 				1C0718632A0C7E9900677845 /* CategoryTableViewController.swift in Sources */,
 				FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */,
