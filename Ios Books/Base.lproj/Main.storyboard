@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ya4-bx-2oA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ya4-bx-2oA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-kD-cRt">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-kD-cRt">
                                 <rect key="frame" x="20" y="64" width="374" height="749"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sách mới" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0a-I5-60D">
@@ -28,8 +27,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Tìm kiếm sách" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0L-sZ-URB">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Tìm kiếm sách" translatesAutoresizingMaskIntoConstraints="NO" id="b0L-sZ-URB">
+                                        <rect key="frame" x="0.0" y="42" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Hhd-hg-SO0"/>
                                         </constraints>
@@ -41,37 +40,52 @@
                                         </scopeButtonTitles>
                                     </searchBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-pK-uM9">
-                                        <rect key="frame" x="0.0" y="110" width="374" height="639"/>
+                                        <rect key="frame" x="0.0" y="102" width="374" height="647"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jrD-M1-hVT">
-                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="itemSize" width="128" height="202"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ttP-ZN-NQ7" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fzb-cY-Jw7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="r75-9g-pYT" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="202"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="202"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-bC-ygC">
-                                                            <rect key="frame" x="4" y="15" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ten sach" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f4-Ye-ilM">
+                                                            <rect key="frame" x="0.0" y="181.5" width="128" height="13.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="130" image="bookImageDefault" translatesAutoresizingMaskIntoConstraints="NO" id="sLa-KL-e0s">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="176.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="sLa-KL-e0s" secondAttribute="height" multiplier="253:349" id="Fq1-RB-Uz4"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="PeE-bC-ygC" firstAttribute="centerX" secondItem="fzb-cY-Jw7" secondAttribute="centerX" id="0me-Mn-nxn"/>
-                                                        <constraint firstItem="PeE-bC-ygC" firstAttribute="centerY" secondItem="fzb-cY-Jw7" secondAttribute="centerY" id="s6Q-cD-cQw"/>
-                                                        <constraint firstItem="PeE-bC-ygC" firstAttribute="top" secondItem="fzb-cY-Jw7" secondAttribute="top" constant="15" id="ylD-lr-W8J"/>
-                                                    </constraints>
-                                                </collectionViewCellContentView>
+                                                </view>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="4f4-Ye-ilM" secondAttribute="trailing" id="23W-VP-f0m"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sLa-KL-e0s" secondAttribute="trailing" id="4Uy-ko-xaD"/>
+                                                    <constraint firstItem="sLa-KL-e0s" firstAttribute="top" secondItem="r75-9g-pYT" secondAttribute="top" id="AJd-e6-EdJ"/>
+                                                    <constraint firstItem="4f4-Ye-ilM" firstAttribute="leading" secondItem="r75-9g-pYT" secondAttribute="leading" id="SGq-zC-i6D"/>
+                                                    <constraint firstItem="4f4-Ye-ilM" firstAttribute="top" secondItem="sLa-KL-e0s" secondAttribute="bottom" constant="5" id="XO1-Cb-krM"/>
+                                                    <constraint firstItem="sLa-KL-e0s" firstAttribute="leading" secondItem="r75-9g-pYT" secondAttribute="leading" id="d98-Vj-7ep"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="safeArea" id="7BM-ZW-ZCe"/>
+                                                <size key="customSize" width="128" height="202"/>
                                                 <connections>
-                                                    <outlet property="bookTitleCell" destination="fzb-cY-Jw7" id="khk-ja-RuI"/>
+                                                    <outlet property="bookImage" destination="sLa-KL-e0s" id="pI7-oR-A3Z"/>
+                                                    <outlet property="bookName" destination="4f4-Ye-ilM" id="4fo-Lc-B0a"/>
+                                                    <segue destination="cPo-8O-7FT" kind="show" id="6sI-Wa-627"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -104,6 +118,7 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Trang chu" image="house.fill" catalog="system" id="1PM-Bv-r2o"/>
+                    <navigationItem key="navigationItem" id="22t-ZW-29y"/>
                     <connections>
                         <outlet property="bookCollectionView" destination="dh7-pK-uM9" id="9Et-nW-u2J"/>
                         <outlet property="searchbar" destination="b0L-sZ-URB" id="Dqm-8G-5rc"/>
@@ -112,6 +127,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbJ-uX-4bg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-114.49275362318842" y="-310.04464285714283"/>
+        </scene>
+        <!--Gioi thieu-->
+        <scene sceneID="oXx-vU-9uq">
+            <objects>
+                <viewController id="cPo-8O-7FT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oqX-9H-8fS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QRD-ii-6Xc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Gioi thieu" prompt="Test" id="5Kk-A1-lNk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8MU-wl-XJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="762" y="-310"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="afe-4m-PCh">
+            <objects>
+                <navigationController id="KQF-cm-jUa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3o6-o2-6Ty">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OXo-Ys-6bd" kind="relationship" relationship="rootViewController" id="Jh0-i1-X5V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J3x-As-F0C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114" y="-1080"/>
         </scene>
         <!--Danh muc-->
         <scene sceneID="Aud-LX-Duo">
@@ -195,9 +242,12 @@
             <point key="canvasLocation" x="-1294" y="-56"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8SE-az-dgc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bookImageDefault" width="79" height="93.5"/>
-        <image name="house.fill" catalog="system" width="64" height="52"/>
-        <image name="rectangle.stack.fill" catalog="system" width="64" height="60"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
     </resources>
 </document>

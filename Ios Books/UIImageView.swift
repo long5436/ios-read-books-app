@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 extension UIImageView {
     func getLinkImageFromFirebase(path: String, completion: @escaping (String?) -> Void) {

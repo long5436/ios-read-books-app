@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
@@ -28,6 +29,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     var documentLast: Any?
     let booksRef = Firestore.firestore().collection("books")
     var searching: Bool = false
+    let bookCellReuseIdentifier: String = "BookCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +40,8 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         bookCollectionView.dataSource = self
         searchbar.delegate = self
         
-        let nib =  UINib(nibName: "BookCollectionViewCell", bundle: nil)
-        bookCollectionView.register(nib, forCellWithReuseIdentifier: "BookCell")
+//        let nib =  UINib(nibName: "BookCollectionViewCell", bundle: nil)
+//        bookCollectionView.register(nib, forCellWithReuseIdentifier: "BookCell")
         
         // Dang ky layout grid view
         self.setGridView()
@@ -96,12 +98,13 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as! BookCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: bookCellReuseIdentifier, for: indexPath) as! BookCollectionViewCell
         cell.setData(book: arrBook[indexPath.row])
         
         //        print("M book la: \(self.arrBook.count)")
         return cell
     }
+    
     
     //     Lay du lieu cac cuon sach tu firebase theo tu khoa tim kiem
     
