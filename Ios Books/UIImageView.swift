@@ -100,7 +100,7 @@ extension UIImageView {
                         
                         // Lưu dữ liệu xuống tệp mới
                         try imageData.write(to: imagePath)
-                        //                        print("Image saved to cache with new name")
+                        //                        print("Image  saved to cache with new name")
                         
                     } catch {
                         

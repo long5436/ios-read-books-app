@@ -33,7 +33,7 @@ class Category {
        public func getName()->String {
            return name
        }
-       
+        
        public func getPhoto()->String {
            return photo
        }
