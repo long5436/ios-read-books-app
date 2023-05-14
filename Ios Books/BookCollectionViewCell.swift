@@ -31,4 +31,5 @@ class BookCollectionViewCell: UICollectionViewCell {
             
         }
     }
+    
 }
