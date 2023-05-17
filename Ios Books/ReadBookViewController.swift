@@ -21,35 +21,33 @@ class ReadBookViewController: UIViewController {
     var book: Book!
     var fontSize: CGFloat = 17
     var page: Int = 1
-    var lastPage: Int = 1
-    let bookPageRef = Firestore.firestore().collection("book_contents")
-    var nextPageContent: String = ""
+    var lastPage = 0
     let firebaseService = FireBaseServices()
+    var dataPageContent: [Int: String] = [:]
     enum StatusPage {
         case next
         case prev
         case current
     }
-    let arrPageContent = [String]()
-//    test code moi
-    var dataPageContent: [Int: String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        showAlert()
+        
+        // Dung de dat trang dau tien se duoc tai
+        // page = 3
+        
+        // Gan gia tri trang cuoi mac dinh, ham load du lieu duoc goi lan dau 2 lan nen -2
+        lastPage = page - 2
         
         setPageTitle()
         bookContentTextView.font = UIFont(name: "NotoSerif", size: fontSize)
         
         // goi ham lay du lieu
-        //        loadDataBookPage(page: page, status: .current, loadDataNextPage: false)
-        // lay truoc du lieu trang tiep theo
-        //        loadDataNextPage(page: nil, status: nil, loadDataNextPage: true)
-        
-        loadDataBookPage(page: page, isNextPage: false)
-        loadDataBookPage(page: 2, isNextPage: false)
-        loadDataBookPage(page: 3, isNextPage: false)
+        loadDataBookPage(page: page, statusPage: .current)
+        loadDataBookPage(page: page + 1, statusPage: .next)
         
         // tat nut chuyen ve trang truoc neu trang hien tai bang 1
         if page == 1 {
@@ -62,27 +60,107 @@ class ReadBookViewController: UIViewController {
         self.navigationItem.title = "Trang \(page)"
     }
     
+    // Tat bat nut next trang
+    func setStatusPageBtn() {
+//        print("current page: \(self.page), last page: \(self.lastPage)")
+        
+        self.btnNext.isEnabled = (self.page < self.lastPage)
+        self.btnPrev.isEnabled = self.page > 1
+    }
+    
+    // Cuon trang len dau khi chuyen trang
+    func scrollViewToTop() {
+        self.bookContentTextView.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
     // Load du lieu trang sach
-    // , status: StatusPage, loadDataNextPage: Bool
-    func loadDataBookPage(page: Int, isNextPage: Bool) {
+    func loadDataBookPage(page: Int, statusPage: StatusPage) {
         if let book = self.book {
             firebaseService.getBookPage(bookId: book.getBookId(), page: page, onCompletion: { (content: String) in
                 if !content.isEmpty {
-//                  them du lieu trang vao dataPageContent
+                    
+                    // them du lieu trang vao dataPageContent
                     self.dataPageContent[page] = content
+                    
+                    switch statusPage {
+                    case .next:
+                        // Tang so trang cuoi cung
+                        // Chi tang so trang cuoi khi truong hop la "current" va "next"
+                        self.lastPage = self.lastPage + 1
+                        // chay tiep de case tiep theo ma khong break
+                        fallthrough
+                    case .prev:
+                        // dat trang thai tat bat nut next trang
+                        // print("ok")
+                        self.setStatusPageBtn()
+                    case .current:
+                        // set noi dung cho textView
+                        self.bookContentTextView.text = content
+                        // gan lai so trang hien tai
+                        self.page = page
+                        // gan lai title la trang hien tai
+                        self.setPageTitle()
+                        // goi tai truoc du lieu
+                        self.loadDataBookPage(page: self.page + 1, statusPage: .next)
+                        // Chi tang so trang cuoi khi truong hop la "current" va "next"
+                        self.lastPage = self.lastPage + 1
+                    }
+                }
+                else {
+                    // dat trang thai tat bat nut next trang
+                    self.setStatusPageBtn()
                 }
             })
         }
     }
     
     // Chuyen ve trang truoc
-    @IBAction func prevPage(_ sender: UIBarButtonItem) {
+    @IBAction func nextPage(_ sender: UIBarButtonItem) {
+        self.scrollViewToTop()
         
+        if let content = self.dataPageContent[self.page + 1] {
+            self.bookContentTextView.text = content
+            self.page = self.page + 1
+            self.setPageTitle()
+            
+            if let _ = self.dataPageContent[self.page + 1] {
+                // dat trang thai tat bat nut next trang
+                self.setStatusPageBtn()
+            }
+            else {
+                loadDataBookPage(page: self.page + 1, statusPage: .next)
+            }
+            
+        }
+        else {
+            loadDataBookPage(page: self.page + 1, statusPage: .next)
+        }
     }
     
     // Chuyen den trang tiep theo
-    @IBAction func nextPage(_ sender: UIBarButtonItem) {
-//        print("Count is: \(self.dataPageContent.count)")
+    @IBAction func prevPage(_ sender: UIBarButtonItem) {
+        self.scrollViewToTop()
+        
+        if let content = self.dataPageContent[self.page - 1] {
+            self.bookContentTextView.text = content
+            self.page = self.page - 1
+            self.setPageTitle()
+            
+            if page > 1 {
+                if let _ = self.dataPageContent[self.page - 1] {
+                    self.setStatusPageBtn()
+                }
+                else {
+                    loadDataBookPage(page: self.page - 1, statusPage: .prev)
+                }
+            }
+            else {
+                self.btnPrev.isEnabled = false
+            }
+        }
+        else {
+            loadDataBookPage(page: self.page - 1, statusPage: .current)
+        }
     }
     
     // Kiem tra tat bat nut tang, giam kich thuoc font chu
@@ -113,6 +191,19 @@ class ReadBookViewController: UIViewController {
         fontSize = fontSize + 5
         bookContentTextView.font = UIFont(name: "NotoSerif", size: fontSize)
         checkBtnFontSize()
+    }
+    
+    // Tao pupop hien thi
+    func showAlert() {
+        let alert = UIAlertController(title: "Thong bao", message: "Sach khong co noi dung", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default) { (ok: UIAlertAction) in
+        }
+        
+        alert.addAction(okButton)
+        
+        self.present(alert, animated: true) {
+            
+        }
     }
     
     
