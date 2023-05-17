@@ -14,6 +14,7 @@
 		5D2F5A932FB891F9C262CA42 /* Pods_Ios_BooksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */; };
 		62A2678778435371857628DE /* Pods_Ios_Books_Ios_BooksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08CDCF6DA5D832CC7DEA724 /* Pods_Ios_Books_Ios_BooksUITests.framework */; };
 		8768476CE4020D9E93E381FD /* Pods_Ios_Books.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB185D08C1C12C04481264E /* Pods_Ios_Books.framework */; };
+		FD12C2162A10F55E001F69B3 /* mycustom-NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */; };
 		FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1967B82A0BA535009007A2 /* UIImageView.swift */; };
 		FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703D29FAD6CF002E5AED /* AppDelegate.swift */; };
 		FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703F29FAD6CF002E5AED /* SceneDelegate.swift */; };
@@ -24,10 +25,12 @@
 		FD36704D29FAD6D1002E5AED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD36704B29FAD6D1002E5AED /* LaunchScreen.storyboard */; };
 		FD36705829FAD6D1002E5AED /* Ios_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36705729FAD6D1002E5AED /* Ios_BooksTests.swift */; };
 		FD36706329FAD6D1002E5AED /* Ios_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36706229FAD6D1002E5AED /* Ios_BooksUITests.swift */; };
+		FD67F5EF2A101F3700ACBCE6 /* ReadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */; };
 		FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B99FD2A082BD1005C5B7E /* Book.swift */; };
 		FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */; };
 		FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */; };
 		FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */; };
+		FDC5C5A02A1164C7008B5661 /* FirebaseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C59F2A1164C7008B5661 /* FirebaseServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,7 @@
 		D08CDCF6DA5D832CC7DEA724 /* Pods_Ios_Books_Ios_BooksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ios_Books_Ios_BooksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16C831B71A0657D8BCFA748 /* Pods-Ios BooksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ios BooksTests.debug.xcconfig"; path = "Target Support Files/Pods-Ios BooksTests/Pods-Ios BooksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ios_BooksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mycustom-NotoSerif-Regular.ttf"; sourceTree = "<group>"; };
 		FD1967B82A0BA535009007A2 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		FD36703A29FAD6CE002E5AED /* Ios Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ios Books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD36703D29FAD6CF002E5AED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,10 +81,12 @@
 		FD36705E29FAD6D1002E5AED /* Ios BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ios BooksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD36706229FAD6D1002E5AED /* Ios_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ios_BooksUITests.swift; sourceTree = "<group>"; };
 		FD36706429FAD6D1002E5AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookViewController.swift; sourceTree = "<group>"; };
 		FD6B99FD2A082BD1005C5B7E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		FDC5C59F2A1164C7008B5661 /* FirebaseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FD12C20D2A10E3DB001F69B3 /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */,
+			);
+			name = CustomFonts;
+			sourceTree = "<group>";
+		};
 		FD36703129FAD6CE002E5AED = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +182,8 @@
 		FD36703C29FAD6CF002E5AED /* Ios Books */ = {
 			isa = PBXGroup;
 			children = (
+				FDC5C59E2A116491008B5661 /* FirebaseServices */,
+				FD12C20D2A10E3DB001F69B3 /* CustomFonts */,
 				1C07185F2A0C7CC800677845 /* TableViewCel */,
 				FD903D592A0BA373009BB96E /* UIImageView */,
 				FDD8B5342A08419F000B7DE5 /* CollectionCell */,
@@ -215,6 +231,7 @@
 			children = (
 				FD36704129FAD6CF002E5AED /* HomeController.swift */,
 				FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */,
+				FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */,
 				1C0718622A0C7E9900677845 /* CategoryTableViewController.swift */,
 				1C7287ED2A0D162A0058745C /* CategoryViewController.swift */,
 			);
@@ -236,6 +253,14 @@
 				FD1967B82A0BA535009007A2 /* UIImageView.swift */,
 			);
 			name = UIImageView;
+			sourceTree = "<group>";
+		};
+		FDC5C59E2A116491008B5661 /* FirebaseServices */ = {
+			isa = PBXGroup;
+			children = (
+				FDC5C59F2A1164C7008B5661 /* FirebaseServices.swift */,
+			);
+			name = FirebaseServices;
 			sourceTree = "<group>";
 		};
 		FDD8B5342A08419F000B7DE5 /* CollectionCell */ = {
@@ -355,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD12C2162A10F55E001F69B3 /* mycustom-NotoSerif-Regular.ttf in Resources */,
 				FD36704D29FAD6D1002E5AED /* LaunchScreen.storyboard in Resources */,
 				FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */,
 				FD36704A29FAD6D1002E5AED /* Assets.xcassets in Resources */,
@@ -496,7 +522,9 @@
 				FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */,
 				1C0718632A0C7E9900677845 /* CategoryTableViewController.swift in Sources */,
 				FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */,
+				FDC5C5A02A1164C7008B5661 /* FirebaseServices.swift in Sources */,
 				FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */,
+				FD67F5EF2A101F3700ACBCE6 /* ReadBookViewController.swift in Sources */,
 				1C07185E2A0C7B5A00677845 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
