@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C07185E2A0C7B5A00677845 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07185D2A0C7B5A00677845 /* Category.swift */; };
 		1C0718612A0C7D8200677845 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0718602A0C7D8200677845 /* TableViewCell.swift */; };
-		1C0718632A0C7E9900677845 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0718622A0C7E9900677845 /* CategoryTableViewController.swift */; };
+		1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */; };
 		1C7287EE2A0D162A0058745C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7287ED2A0D162A0058745C /* CategoryViewController.swift */; };
 		5D2F5A932FB891F9C262CA42 /* Pods_Ios_BooksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */; };
 		62A2678778435371857628DE /* Pods_Ios_Books_Ios_BooksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08CDCF6DA5D832CC7DEA724 /* Pods_Ios_Books_Ios_BooksUITests.framework */; };
@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		1C07185D2A0C7B5A00677845 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		1C0718602A0C7D8200677845 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		1C0718622A0C7E9900677845 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailController.swift; sourceTree = "<group>"; };
 		1C7287ED2A0D162A0058745C /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		51087ADFFF4856465832372E /* Pods-Ios Books-Ios BooksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ios Books-Ios BooksUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ios Books-Ios BooksUITests/Pods-Ios Books-Ios BooksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		59AD3F412CA27D52983AF070 /* Pods-Ios Books.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ios Books.debug.xcconfig"; path = "Target Support Files/Pods-Ios Books/Pods-Ios Books.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,12 +117,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C07185F2A0C7CC800677845 /* TableViewCel */ = {
+		1C07185F2A0C7CC800677845 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				1C0718602A0C7D8200677845 /* TableViewCell.swift */,
 			);
-			name = TableViewCel;
+			name = TableViewCell;
 			sourceTree = "<group>";
 		};
 		C6D8AF31543910B11631D174 /* Frameworks */ = {
@@ -234,6 +234,7 @@
 				FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */,
 				1C0718622A0C7E9900677845 /* CategoryTableViewController.swift */,
 				1C7287ED2A0D162A0058745C /* CategoryViewController.swift */,
+				1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -516,11 +517,11 @@
 				FD36704229FAD6CF002E5AED /* HomeController.swift in Sources */,
 				1C0718612A0C7D8200677845 /* TableViewCell.swift in Sources */,
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
+				1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */,
 				FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */,
 				FD36704829FAD6CF002E5AED /* Ios_Books.xcdatamodeld in Sources */,
 				FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */,
 				FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */,
-				1C0718632A0C7E9900677845 /* CategoryTableViewController.swift in Sources */,
 				FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */,
 				FDC5C5A02A1164C7008B5661 /* FirebaseServices.swift in Sources */,
 				FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */,
