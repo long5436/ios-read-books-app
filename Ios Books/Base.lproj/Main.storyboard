@@ -212,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="1671.0144927536232" y="-310.04464285714283"/>
         </scene>
-        <!--Danh mục-->
+        <!--Category View Controller-->
         <scene sceneID="Aud-LX-Duo">
             <objects>
                 <viewController id="O7S-f8-2JC" customClass="CategoryViewController" customModule="Ios_Books" customModuleProvider="target" sceneMemberID="viewController">
@@ -220,8 +220,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OGi-Np-coF">
-                                <rect key="frame" x="20" y="44" width="374" height="767.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OGi-Np-coF">
+                                <rect key="frame" x="20" y="88" width="374" height="723.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKd-hf-AYk">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="38.5"/>
@@ -233,8 +233,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kuI-b7-yB8">
-                                        <rect key="frame" x="0.0" y="48.5" width="374" height="719"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="0.0" y="40.5" width="374" height="683"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tableviewcell" rowHeight="104" id="yBo-MK-Q2Q" customClass="TableViewCell" customModule="Ios_Books" customModuleProvider="target">
@@ -280,14 +280,93 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BRS-tI-jg7"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Danh mục" image="rectangle.stack.fill" catalog="system" id="hEZ-nU-bbV"/>
+                    <navigationItem key="navigationItem" id="Efr-lP-paS"/>
                     <connections>
                         <outlet property="tableView" destination="kuI-b7-yB8" id="tJh-TD-3u4"/>
+                        <segue destination="uCd-dg-QsJ" kind="show" identifier="categoryDetail" id="461-Yg-2hZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkn-TA-edy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.7971014492753632" y="527.67857142857144"/>
+            <point key="canvasLocation" x="915.94202898550736" y="527.67857142857144"/>
+        </scene>
+        <!--Danh mục-->
+        <scene sceneID="Pet-nQ-a5c">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="uCd-dg-QsJ" customClass="CategoryDetailController" customModule="Ios_Books" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RK0-U3-eXb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bbP-wU-Gbb">
+                                <rect key="frame" x="20" y="88" width="374" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NvS-Gh-rgU">
+                                    <size key="itemSize" width="128" height="202"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="0qr-T4-uqy" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="202"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="202"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ten sach" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3Z-7W-rbf">
+                                                    <rect key="frame" x="0.0" y="181.5" width="128" height="13.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="130" image="bookImageDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Caa-4q-I2i">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="176.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Caa-4q-I2i" secondAttribute="height" multiplier="253:349" id="PwX-s2-VQi"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Caa-4q-I2i" secondAttribute="trailing" id="6CT-2h-Mae"/>
+                                            <constraint firstAttribute="trailing" secondItem="b3Z-7W-rbf" secondAttribute="trailing" id="7Jk-uK-lCL"/>
+                                            <constraint firstItem="Caa-4q-I2i" firstAttribute="top" secondItem="0qr-T4-uqy" secondAttribute="top" id="IUE-uU-Vrj"/>
+                                            <constraint firstItem="b3Z-7W-rbf" firstAttribute="leading" secondItem="0qr-T4-uqy" secondAttribute="leading" id="qix-ha-udL"/>
+                                            <constraint firstItem="b3Z-7W-rbf" firstAttribute="top" secondItem="Caa-4q-I2i" secondAttribute="bottom" constant="5" id="seB-CM-ypR"/>
+                                            <constraint firstItem="Caa-4q-I2i" firstAttribute="leading" secondItem="0qr-T4-uqy" secondAttribute="leading" id="tHg-gx-wH8"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="safeArea" id="AAD-cS-UaL"/>
+                                        <size key="customSize" width="128" height="202"/>
+                                        <connections>
+                                            <outlet property="bookImage" destination="Caa-4q-I2i" id="pmh-LQ-7SP"/>
+                                            <outlet property="bookName" destination="b3Z-7W-rbf" id="EFt-4h-v4S"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bbP-wU-Gbb" firstAttribute="leading" secondItem="d7b-Bh-WTN" secondAttribute="leading" constant="20" id="U7L-pU-8Nv"/>
+                            <constraint firstItem="bbP-wU-Gbb" firstAttribute="top" secondItem="d7b-Bh-WTN" secondAttribute="top" id="aYr-J7-cKB"/>
+                            <constraint firstItem="d7b-Bh-WTN" firstAttribute="trailing" secondItem="bbP-wU-Gbb" secondAttribute="trailing" constant="20" id="jIs-UQ-0Bf"/>
+                            <constraint firstItem="d7b-Bh-WTN" firstAttribute="bottom" secondItem="bbP-wU-Gbb" secondAttribute="bottom" id="qTr-E2-3vg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d7b-Bh-WTN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Danh mục" id="tbn-2q-DI2"/>
+                    <connections>
+                        <outlet property="CategoryDetail" destination="bbP-wU-Gbb" id="Peb-Iy-R88"/>
+                        <segue destination="cPo-8O-7FT" kind="show" identifier="bookDetail" id="XVJ-n0-nzO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljB-UE-MDL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1986.9565217391305" y="527.67857142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZKR-Xd-0Rk">
@@ -300,7 +379,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="0hN-Le-Cl1" kind="relationship" relationship="viewControllers" id="8SE-az-dgc"/>
-                        <segue destination="O7S-f8-2JC" kind="relationship" relationship="viewControllers" id="nl6-4K-g30"/>
+                        <segue destination="Hph-4Q-ZFx" kind="relationship" relationship="viewControllers" id="nl6-4K-g30"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qas-6t-4nz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -326,7 +405,29 @@
             </objects>
             <point key="canvasLocation" x="-114.49275362318842" y="-310.04464285714283"/>
         </scene>
+        <!--Danh mục-->
+        <scene sceneID="anG-uf-KB4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hph-4Q-ZFx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Danh mục" image="rectangle.stack.fill" catalog="system" id="hEZ-nU-bbV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YIO-wO-hTC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="O7S-f8-2JC" kind="relationship" relationship="rootViewController" id="sc8-xf-gcy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W18-0p-vYY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.7971014492753632" y="527.67857142857144"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XVJ-n0-nzO"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bookImageDefault" width="79" height="93.5"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>

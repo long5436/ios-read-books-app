@@ -10,19 +10,23 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate
 {
     
     
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
+    enum NavigationType {
+        case categoryDetail
+        
+    }
     
-    
+    var navigationType : NavigationType = .categoryDetail
     
     let categorysRef = Firestore.firestore().collection("categories")
     
     private var categoryBook = [Category]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,18 +34,6 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         
         
-        //        if let category = Category(categoryId: "fddfs", name: "sddsddddd", photo: "sesgr "){
-        //            categoryBook += [category]
-        //
-        //        }
-        //        if let category1 = Category(categoryId: "fddfs", name: "sddsddddd", photo: "sesgr "){
-        //            categoryBook += [category1]
-        //
-        //        }
-        //        if let category2 = Category(categoryId: "fddfs", name: "sddsddddd", photo: "sesgr "){
-        //            categoryBook += [category2]
-        //
-        //        }
         
         getCategorys()
     }
@@ -102,42 +94,60 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseCell = "Tableviewcell"
         if  let cell = tableView.dequeueReusableCell(withIdentifier: reuseCell, for: indexPath) as? TableViewCell{
-
+            
             //lay du lieu category
-
+            
             let cate = categoryBook[indexPath.row]
             cell.lblCategory.text = cate.getName()
             cell.setData(category: cate)
-
+            
             return cell
         }
         fatalError("ko the cell")
-    
+        
     }
     
-  
     
+    // MARK: An thanh dieu huong o man hinh dau tien
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "categoryDetail", sender: indexPath)
+    }
     
     
     
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //    func getLinkImageFromFirebase(path: String, completion: @escaping (String?) -> Void) {
-    //        let storageRef = Storage.storage().reference()
-    //        storageRef.downloadURL { (url, error) in
-    //            guard url != nil else {
-    //                // Nếu có lỗi, in ra thông báo lỗi
-    //                if let error = error {
-    //                    print("Error downloading image: \(error.localizedDescription)")
-    //                }
-    //                return
-    //            }
-    //
-    //        }
-    //    }
-    
+    //  In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Chuyen man hinh")
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Trở về"
+        navigationItem.backBarButtonItem = backItem
+        
+        
+        if let destination = segue.destination as? CategoryDetailController{
+            //            if let segueName = segue.identifier{
+            //                                if segueName == "Danh mục"{
+            
+            if let selecteđIndexPath = tableView.indexPathForSelectedRow{
+                destination.category = categoryBook[selecteđIndexPath.row]
+                //  print("ákuhfk")
+            }
+//        }
+        //            }
+    }
+}
 }
