@@ -29,12 +29,13 @@ class ReadBookViewController: UIViewController {
         case prev
         case current
     }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        showAlert()
+        // showAlert()
         
         // Dung de dat trang dau tien se duoc tai
         // page = 3
@@ -62,7 +63,7 @@ class ReadBookViewController: UIViewController {
     
     // Tat bat nut next trang
     func setStatusPageBtn() {
-//        print("current page: \(self.page), last page: \(self.lastPage)")
+        //  print("current page: \(self.page), last page: \(self.lastPage)")
         
         self.btnNext.isEnabled = (self.page < self.lastPage)
         self.btnPrev.isEnabled = self.page > 1
@@ -109,6 +110,10 @@ class ReadBookViewController: UIViewController {
                 else {
                     // dat trang thai tat bat nut next trang
                     self.setStatusPageBtn()
+                    // goi khi sach khong co noi dung
+                    if page == 1 {
+                        self.showAlert()
+                    }
                 }
             })
         }
@@ -193,17 +198,35 @@ class ReadBookViewController: UIViewController {
         checkBtnFontSize()
     }
     
-    // Tao pupop hien thi
+    // init alert
+    func initAlert() {
+       
+    }
+    
+    // Tao pupop hien thi khi sach khong co noi dung
     func showAlert() {
-        let alert = UIAlertController(title: "Thong bao", message: "Sach khong co noi dung", preferredStyle: .alert)
+        
+//        print("da vo day")
+        
+        if let presentedViewController = self.presentedViewController {
+            presentedViewController.dismiss(animated: true, completion: nil)
+        }
+        
+        let alert = UIAlertController(title: "Thông báo", message: "Sách không có nội dung", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default) { (ok: UIAlertAction) in
-        }
-        
+                   // Lay doi tuong navigation controller
+                   if let navigationController = self.navigationController {
+                       self.dismiss(animated: true, completion: nil)
+                       navigationController.popViewController(animated: true)
+                   }
+               }
+               
         alert.addAction(okButton)
-        
-        self.present(alert, animated: true) {
-            
+        DispatchQueue.main.async {
+//            print("da goi")
+            self.present(alert, animated: true)
         }
+//        self.present(alert, animated: true)
     }
     
     
