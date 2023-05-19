@@ -139,15 +139,12 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         if let destination = segue.destination as? CategoryDetailController{
-            //            if let segueName = segue.identifier{
-            //                                if segueName == "Danh mục"{
-            
             if let selecteđIndexPath = tableView.indexPathForSelectedRow{
                 destination.category = categoryBook[selecteđIndexPath.row]
-                //  print("ákuhfk")
+                
             }
-//        }
-        //            }
+            //        }
+            //            }
+        }
     }
-}
 }
