@@ -17,6 +17,7 @@
 		FD12C2162A10F55E001F69B3 /* mycustom-NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */; };
 		FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1967B82A0BA535009007A2 /* UIImageView.swift */; };
 		FD22656E2A176E3900E4852C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22656D2A176E3900E4852C /* HistoryViewController.swift */; };
+		FD30D4B62A17774C000BF6C7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30D4B52A17774C000BF6C7 /* RegisterViewController.swift */; };
 		FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703D29FAD6CF002E5AED /* AppDelegate.swift */; };
 		FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703F29FAD6CF002E5AED /* SceneDelegate.swift */; };
 		FD36704229FAD6CF002E5AED /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36704129FAD6CF002E5AED /* HomeController.swift */; };
@@ -67,7 +68,6 @@
 		F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ios_BooksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mycustom-NotoSerif-Regular.ttf"; sourceTree = "<group>"; };
 		FD1967B82A0BA535009007A2 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		FD22656D2A176E3900E4852C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		FD36703A29FAD6CE002E5AED /* Ios Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ios Books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD36703D29FAD6CF002E5AED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD36703F29FAD6CF002E5AED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +158,14 @@
 			name = CustomFonts;
 			sourceTree = "<group>";
 		};
+		FD30D4B42A17772E000BF6C7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FD30D4B52A17774C000BF6C7 /* RegisterViewController.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
 		FD36703129FAD6CE002E5AED = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +239,7 @@
 		FD36707129FAD730002E5AED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FD30D4B42A17772E000BF6C7 /* Auth */,
 				FD36704129FAD6CF002E5AED /* HomeController.swift */,
 				FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */,
 				FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */,
@@ -522,6 +531,7 @@
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
 				1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */,
 				FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */,
+				FD30D4B62A17774C000BF6C7 /* RegisterViewController.swift in Sources */,
 				FD36704829FAD6CF002E5AED /* Ios_Books.xcdatamodeld in Sources */,
 				FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */,
 				FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */,
