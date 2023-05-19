@@ -21,6 +21,7 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bookImage.layer.cornerRadius = 4
         
         // load du lieu sach len man hinh
         if let book = book {
