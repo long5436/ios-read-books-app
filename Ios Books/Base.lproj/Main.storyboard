@@ -141,13 +141,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rKi-VV-wjX">
-                                <rect key="frame" x="20" y="88" width="374" height="734"/>
+                                <rect key="frame" x="20" y="88" width="374" height="862"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WcU-lW-001">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="357"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="421"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fxU-Kc-Hgk">
-                                                <rect key="frame" x="0.0" y="28.5" width="177" height="300"/>
+                                                <rect key="frame" x="0.0" y="60.5" width="177" height="300"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="130" image="bookImageDefault" translatesAutoresizingMaskIntoConstraints="NO" id="YnI-3k-jD0">
                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="230"/>
@@ -174,7 +174,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VH-uJ-5N2">
-                                                <rect key="frame" x="197" y="158.5" width="177" height="40"/>
+                                                <rect key="frame" x="197" y="190.5" width="177" height="40"/>
                                                 <color key="backgroundColor" red="0.34817597197396732" green="0.684789616639635" blue="1" alpha="0.29189590669014087" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Đọc sách"/>
                                                 <connections>
@@ -184,7 +184,7 @@
                                         </subviews>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySv-Tc-XRz">
-                                        <rect key="frame" x="0.0" y="377" width="374" height="357"/>
+                                        <rect key="frame" x="0.0" y="441" width="374" height="421"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -452,7 +452,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Danh mục" id="tbn-2q-DI2"/>
                     <connections>
-                        <outlet property="CategoryDetail" destination="bbP-wU-Gbb" id="Peb-Iy-R88"/>
+                        <outlet property="collection" destination="bbP-wU-Gbb" id="Peb-Iy-R88"/>
                         <segue destination="cPo-8O-7FT" kind="show" identifier="bookDetail" id="XVJ-n0-nzO"/>
                     </connections>
                 </viewController>
