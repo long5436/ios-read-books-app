@@ -472,6 +472,7 @@
                     <connections>
                         <segue destination="0hN-Le-Cl1" kind="relationship" relationship="viewControllers" id="8SE-az-dgc"/>
                         <segue destination="Hph-4Q-ZFx" kind="relationship" relationship="viewControllers" id="nl6-4K-g30"/>
+                        <segue destination="7tG-Uz-zzA" kind="relationship" relationship="viewControllers" id="eou-yS-XPF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qas-6t-4nz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -516,14 +517,120 @@
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="527.67857142857144"/>
         </scene>
+        <!--Tủ sách-->
+        <scene sceneID="WkS-SV-sYm">
+            <objects>
+                <viewController id="7tG-Uz-zzA" customClass="HistoryViewController" customModule="Ios_Books" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vZZ-P2-3t6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GCS-ps-qEb">
+                                <rect key="frame" x="20" y="44" width="374" height="360"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sách đang đọc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-Ln-Hw2">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="sFs-Fx-i0d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDg-GE-gsg">
+                                        <rect key="frame" x="0.0" y="70" width="374" height="230"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="130" image="bookImageDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Ii2-Au-mRP">
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="230"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Ii2-Au-mRP" secondAttribute="height" multiplier="10:13" id="mIC-gH-qqG"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tjy-2y-52M">
+                                                <rect key="frame" x="197" y="0.0" width="177" height="230"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="177" placeholderIntrinsicHeight="105" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="VXz-tH-J5c">
+                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="105"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcd-5D-kPn">
+                                                                <rect key="frame" x="0.0" y="0.0" width="177" height="19.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-q6-fuJ">
+                                                                <rect key="frame" x="0.0" y="85.5" width="177" height="19.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11b-CP-CV8">
+                                                        <rect key="frame" x="0.0" y="125" width="177" height="105"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="11b-CP-CV8" secondAttribute="trailing" id="1fk-aL-MnW"/>
+                                                    <constraint firstItem="11b-CP-CV8" firstAttribute="leading" secondItem="tjy-2y-52M" secondAttribute="leading" id="BSD-Ee-0CV"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="tjy-2y-52M" firstAttribute="top" secondItem="pDg-GE-gsg" secondAttribute="top" id="B6I-b2-Fxt"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpC-6g-uwV">
+                                        <rect key="frame" x="0.0" y="320" width="374" height="40"/>
+                                        <color key="backgroundColor" red="0.348175972" green="0.68478961660000004" blue="1" alpha="0.29189590669999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Đọc tiếp"/>
+                                        <connections>
+                                            <action selector="readBookTap:" destination="cPo-8O-7FT" eventType="touchUpInside" id="YTD-pE-Ppb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="R0W-Ln-Hw2" secondAttribute="trailing" id="DEk-5X-qZH"/>
+                                    <constraint firstItem="pDg-GE-gsg" firstAttribute="leading" secondItem="GCS-ps-qEb" secondAttribute="leading" id="PRv-El-D1p"/>
+                                    <constraint firstAttribute="trailing" secondItem="pDg-GE-gsg" secondAttribute="trailing" id="eaj-vN-FVh"/>
+                                    <constraint firstItem="RpC-6g-uwV" firstAttribute="leading" secondItem="GCS-ps-qEb" secondAttribute="leading" id="fSB-ZW-0UH"/>
+                                    <constraint firstAttribute="trailing" secondItem="RpC-6g-uwV" secondAttribute="trailing" id="je7-y3-cAC"/>
+                                    <constraint firstItem="R0W-Ln-Hw2" firstAttribute="leading" secondItem="GCS-ps-qEb" secondAttribute="leading" id="uaR-AX-ea1"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GCS-ps-qEb" firstAttribute="leading" secondItem="4ab-lf-Awo" secondAttribute="leading" constant="20" id="7qh-ec-j74"/>
+                            <constraint firstItem="GCS-ps-qEb" firstAttribute="top" secondItem="4ab-lf-Awo" secondAttribute="top" id="CfY-Lm-OFx"/>
+                            <constraint firstItem="4ab-lf-Awo" firstAttribute="trailing" secondItem="GCS-ps-qEb" secondAttribute="trailing" constant="20" id="jvn-mG-1Nb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4ab-lf-Awo"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Tủ sách" image="clock.fill" catalog="system" id="Wel-tA-fLI"/>
+                    <connections>
+                        <outlet property="bookImage" destination="Ii2-Au-mRP" id="aH6-SS-HuF"/>
+                        <outlet property="bookName" destination="Bcd-5D-kPn" id="Fbv-q3-EDu"/>
+                        <outlet property="bookPage" destination="OAB-q6-fuJ" id="E9d-XB-EoW"/>
+                        <outlet property="btnReadBookContinue" destination="RpC-6g-uwV" id="XcW-Xo-k8c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O4W-ga-BaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="1236"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XVJ-n0-nzO"/>
+        <segue reference="xZP-WD-GZM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookImageDefault" width="79" height="93.5"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="clock.fill" catalog="system" width="128" height="121"/>
         <image name="gobackward.minus" catalog="system" width="121" height="128"/>
         <image name="goforward.plus" catalog="system" width="121" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
