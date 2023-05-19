@@ -16,6 +16,7 @@
 		8768476CE4020D9E93E381FD /* Pods_Ios_Books.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB185D08C1C12C04481264E /* Pods_Ios_Books.framework */; };
 		FD12C2162A10F55E001F69B3 /* mycustom-NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */; };
 		FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1967B82A0BA535009007A2 /* UIImageView.swift */; };
+		FD22656E2A176E3900E4852C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22656D2A176E3900E4852C /* HistoryViewController.swift */; };
 		FD30D4B62A17774C000BF6C7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30D4B52A17774C000BF6C7 /* RegisterViewController.swift */; };
 		FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703D29FAD6CF002E5AED /* AppDelegate.swift */; };
 		FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36703F29FAD6CF002E5AED /* SceneDelegate.swift */; };
@@ -67,7 +68,6 @@
 		F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ios_BooksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mycustom-NotoSerif-Regular.ttf"; sourceTree = "<group>"; };
 		FD1967B82A0BA535009007A2 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		FD30D4B52A17774C000BF6C7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FD36703A29FAD6CE002E5AED /* Ios Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ios Books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD36703D29FAD6CF002E5AED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD36703F29FAD6CF002E5AED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				FD36703C29FAD6CF002E5AED /* Ios Books */,
-				FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */,
 				FD36705629FAD6D1002E5AED /* Ios BooksTests */,
 				FD36706129FAD6D1002E5AED /* Ios BooksUITests */,
 				FD36703B29FAD6CE002E5AED /* Products */,
@@ -200,6 +199,7 @@
 				FD6B99FC2A082BB7005C5B7E /* DataModels */,
 				FD36707129FAD730002E5AED /* Models */,
 				FD36704329FAD6CF002E5AED /* Main.storyboard */,
+				FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */,
 				FD36707029FAD708002E5AED /* System files */,
 			);
 			path = "Ios Books";
@@ -245,6 +245,7 @@
 				FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */,
 				1C7287ED2A0D162A0058745C /* CategoryViewController.swift */,
 				1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */,
+				FD22656D2A176E3900E4852C /* HistoryViewController.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -526,6 +527,7 @@
 				1C7287EE2A0D162A0058745C /* CategoryViewController.swift in Sources */,
 				FD36704229FAD6CF002E5AED /* HomeController.swift in Sources */,
 				1C0718612A0C7D8200677845 /* TableViewCell.swift in Sources */,
+				FD22656E2A176E3900E4852C /* HistoryViewController.swift in Sources */,
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
 				1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */,
 				FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */,
