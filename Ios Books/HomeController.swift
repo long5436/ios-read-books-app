@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     //MARK: Properties
     @IBOutlet weak var bookCollectionView: UICollectionView!
@@ -41,10 +41,22 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         // Thiết lập data source cho UICollectionView
         bookCollectionView.delegate = self
         bookCollectionView.dataSource = self
-        searchbar.delegate = self
+        //        searchbar.delegate = self
         
         //        let nib =  UINib(nibName: "BookCollectionViewCell", bundle: nil)
         //        bookCollectionView.register(nib, forCellWithReuseIdentifier: "BookCell")
+        
+        // lam title chu bu
+        navigationController?.navigationBar.prefersLargeTitles = true
+        //        navigationItem.largeTitleDisplayMode = .never
+        
+        // test searchBar in navigation
+        let searchbarController = UISearchController()
+        searchbarController.searchBar.placeholder = "Tìm kiếm sách"
+        searchbarController.searchBar.searchBarStyle = .minimal
+        searchbarController.searchResultsUpdater = self
+        navigationItem.searchController = searchbarController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         // Dang ky layout grid view
         self.setGridView()
@@ -55,30 +67,35 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    
     
     //MARK: Hien thuc ham uy quyen cho searchbar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //        print("tapped")
         
         // an ban phim
-        searchbar.resignFirstResponder()
+        //        searchbar.resignFirstResponder()
         searchBooks()
         
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0 {
-            if searching {
-                // tat trang thai dang tim kiem
-                searching = false
-                // lay lai mang sach ban dau
-                arrBook = Array(arrBookBackup)
-                // load lai du lieu collection
-                self.bookCollectionView.reloadData()
-                
-            }
-        }
-    }
+    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //        if searchBar.text?.count == 0 {
+    //            if searching {
+    //                // tat trang thai dang tim kiem
+    //                searching = false
+    //                // lay lai mang sach ban dau
+    //                arrBook = Array(arrBookBackup)
+    //                // load lai du lieu collection
+    //                self.bookCollectionView.reloadData()
+    //
+    //            }
+    //        }
+    //    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -119,15 +136,15 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: An thanh dieu huong o man hinh dau tien
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        navigationController?.setNavigationBarHidden(true, animated: animated)
+    //    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        super.viewWillDisappear(animated)
+    //        navigationController?.setNavigationBarHidden(false, animated: animated)
+    //    }
     
     
     
@@ -214,7 +231,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             }
             
             // an ban phim
-            searchbar.resignFirstResponder()
+            //            searchbar.resignFirstResponder()
             
         }
     }
