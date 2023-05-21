@@ -10,6 +10,7 @@ target 'Ios Books' do
  pod 'Firebase/Analytics', '7.9.0'
  pod 'Firebase/Firestore', '7.9.0'
  pod 'Firebase/Storage', '7.9.0'
+ pod 'Firebase/Auth', '7.9.0'
 
   target 'Ios BooksTests' do
     inherit! :search_paths
