@@ -25,12 +25,13 @@ class ReadBookViewController: UIViewController {
     var lastPage = 0
     let firebaseService = FireBaseServices()
     var dataPageContent: [Int: String] = [:]
+    var isCallApi: Bool = false
     enum StatusPage {
         case next
         case prev
         case current
     }
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class ReadBookViewController: UIViewController {
         setPageTitle()
         bookContentTextView.font = UIFont(name: "NotoSerif", size: fontSize)
         bookContentTextView.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 100, right: 20)
-    
+        
         // goi ham lay du lieu
         loadDataBookPage(page: page, statusPage: .current)
         loadDataBookPage(page: page + 1, statusPage: .next)
@@ -56,9 +57,8 @@ class ReadBookViewController: UIViewController {
         if page == 1 {
             btnPrev.isEnabled = false
         }
-        
     }
-
+    
     
     // Dat trang tren tieu de
     func setPageTitle() {
@@ -75,12 +75,16 @@ class ReadBookViewController: UIViewController {
     
     // Cuon trang len dau khi chuyen trang
     func scrollViewToTop() {
-        self.bookContentTextView.setContentOffset(CGPoint.zero, animated: false)
+        // Cuộn view lên đầu màn hình
+        let topRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        self.bookContentTextView.scrollRectToVisible(topRect, animated: false)
     }
     
     // Load du lieu trang sach
     func loadDataBookPage(page: Int, statusPage: StatusPage) {
         if let book = self.book {
+            // set trang thai dang call api
+            self.isCallApi = true
             firebaseService.getBookPage(bookId: book.getBookId(), page: page, onCompletion: { (content: String) in
                 if !content.isEmpty {
                     
@@ -98,6 +102,7 @@ class ReadBookViewController: UIViewController {
                         // dat trang thai tat bat nut next trang
                         // print("ok")
                         self.setStatusPageBtn()
+                        self.isCallApi = false
                     case .current:
                         // set noi dung cho textView
                         self.bookContentTextView.text = content
@@ -114,6 +119,8 @@ class ReadBookViewController: UIViewController {
                 else {
                     // dat trang thai tat bat nut next trang
                     self.setStatusPageBtn()
+                    self.isCallApi = false
+                    
                     // goi khi sach khong co noi dung
                     if page == 1 {
                         self.showAlert()
@@ -125,50 +132,56 @@ class ReadBookViewController: UIViewController {
     
     // Chuyen ve trang truoc
     @IBAction func nextPage(_ sender: UIBarButtonItem) {
-        self.scrollViewToTop()
         
-        if let content = self.dataPageContent[self.page + 1] {
-            self.bookContentTextView.text = content
-            self.page = self.page + 1
-            self.setPageTitle()
+        if !self.isCallApi{
+            self.scrollViewToTop()
             
-            if let _ = self.dataPageContent[self.page + 1] {
-                // dat trang thai tat bat nut next trang
-                self.setStatusPageBtn()
+            if let content = self.dataPageContent[self.page + 1] {
+                self.bookContentTextView.text = content
+                self.page = self.page + 1
+                self.setPageTitle()
+                
+                if let _ = self.dataPageContent[self.page + 1] {
+                    // dat trang thai tat bat nut next trang
+                    self.setStatusPageBtn()
+                }
+                else {
+                    loadDataBookPage(page: self.page + 1, statusPage: .next)
+                }
+                
             }
             else {
                 loadDataBookPage(page: self.page + 1, statusPage: .next)
             }
             
         }
-        else {
-            loadDataBookPage(page: self.page + 1, statusPage: .next)
-        }
     }
     
     // Chuyen den trang tiep theo
     @IBAction func prevPage(_ sender: UIBarButtonItem) {
-        self.scrollViewToTop()
-        
-        if let content = self.dataPageContent[self.page - 1] {
-            self.bookContentTextView.text = content
-            self.page = self.page - 1
-            self.setPageTitle()
+        if !self.isCallApi{
+            self.scrollViewToTop()
             
-            if page > 1 {
-                if let _ = self.dataPageContent[self.page - 1] {
-                    self.setStatusPageBtn()
+            if let content = self.dataPageContent[self.page - 1] {
+                self.bookContentTextView.text = content
+                self.page = self.page - 1
+                self.setPageTitle()
+                
+                if page > 1 {
+                    if let _ = self.dataPageContent[self.page - 1] {
+                        self.setStatusPageBtn()
+                    }
+                    else {
+                        loadDataBookPage(page: self.page - 1, statusPage: .prev)
+                    }
                 }
                 else {
-                    loadDataBookPage(page: self.page - 1, statusPage: .prev)
+                    self.btnPrev.isEnabled = false
                 }
             }
             else {
-                self.btnPrev.isEnabled = false
+                loadDataBookPage(page: self.page - 1, statusPage: .current)
             }
-        }
-        else {
-            loadDataBookPage(page: self.page - 1, statusPage: .current)
         }
     }
     
@@ -204,13 +217,13 @@ class ReadBookViewController: UIViewController {
     
     // init alert
     func initAlert() {
-       
+        
     }
     
     // Tao pupop hien thi khi sach khong co noi dung
     func showAlert() {
         
-//        print("da vo day")
+        //        print("da vo day")
         
         if let presentedViewController = self.presentedViewController {
             presentedViewController.dismiss(animated: true, completion: nil)
@@ -218,19 +231,19 @@ class ReadBookViewController: UIViewController {
         
         let alert = UIAlertController(title: "Thông báo", message: "Sách không có nội dung", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default) { (ok: UIAlertAction) in
-                   // Lay doi tuong navigation controller
-                   if let navigationController = self.navigationController {
-                       self.dismiss(animated: true, completion: nil)
-                       navigationController.popViewController(animated: true)
-                   }
-               }
-               
+            // Lay doi tuong navigation controller
+            if let navigationController = self.navigationController {
+                self.dismiss(animated: true, completion: nil)
+                navigationController.popViewController(animated: true)
+            }
+        }
+        
         alert.addAction(okButton)
         DispatchQueue.main.async {
-//            print("da goi")
+            //            print("da goi")
             self.present(alert, animated: true)
         }
-//        self.present(alert, animated: true)
+        //        self.present(alert, animated: true)
     }
     
     /*

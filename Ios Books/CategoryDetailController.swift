@@ -46,7 +46,7 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
     func setGridView() {
         let flow = collection.collectionViewLayout as! UICollectionViewFlowLayout
         flow.minimumInteritemSpacing = CGFloat(self.cellMarginSize)
-        flow.minimumLineSpacing = CGFloat(self.cellMarginSize * 2)
+        flow.minimumLineSpacing = CGFloat(self.cellMarginSize * 2 + 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -159,7 +159,7 @@ extension CategoryDetailController: UICollectionViewDelegateFlowLayout {
         let numberOfItemsPerRow: CGFloat = 3
         let itemWidth = (collectionView.frame.width / numberOfItemsPerRow) - 8.0
         
-        return CGSize(width: itemWidth, height: (itemWidth * 2) - (itemWidth / 3))
+        return CGSize(width: itemWidth, height: (itemWidth * 2) + 2 - (itemWidth / 3))
     }
 }
 
