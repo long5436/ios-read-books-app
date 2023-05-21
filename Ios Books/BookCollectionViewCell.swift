@@ -14,14 +14,19 @@ class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookImage: UIImageView!
     
     var bookImageUrl: String?
+    var book: Book?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        bookImage.layer.cornerRadius = 4
     }
     
     // khoi tao du lieu cho cell sach
     func setData(book: Book) {
+        
+        self.book = book
+        
         if let label = bookName {
             label.text = book.getName()
         }
@@ -31,5 +36,4 @@ class BookCollectionViewCell: UICollectionViewCell {
             
         }
     }
-    
 }

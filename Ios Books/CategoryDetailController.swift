@@ -23,6 +23,8 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
     let bookCellReuseIdentifier: String = "BookCell"
     private let categoryBook = Firestore.firestore().collection("books")
     var cellMarginSize: Float = 5.0
+    var bookSelected: Book!
+    let segueAboutViewIdentifier: String = "bookDetail"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,53 +61,15 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
         return cell
     }
     
-    //     Lay du lieu cac cuon sach tu firebase trang tiep theo
-    //    func getBooksNextPage(){
-    //        if let last = self.documentLast {
-    //            let query = self.categoryBook
-    //                .order(by: "cate_id", descending: true)
-    //                .start(afterDocument: last as! DocumentSnapshot)
-    //                .limit(to: 5)
-    //
-    //            loadDataFromFirebaseToBooks(query: query)
-    //        }
-    //    }
-    
-    
-    //Xu ly du lieu luu vao sach
-    //    func loadDataFromFirebaseToBooks(query: Query) {
-    //        query.getDocuments{ (snapshot, error) in
-    //            guard let snapshot = snapshot else {
-    //                print("Error fetching documents: \(error!)")
-    //                return}
-    //
-    //
-    //            var books = [Book]()
-    //            //layas du lieu
-    //            for document in snapshot.documents{
-    //                let data = document.data()
-    //
-    //                guard
-    //                    let categoryId = data["cate_id"] as? String,
-    //                    let name = data["name"] as? String,
-    //                    let photo = data["photo"] as? String,
-    //                    let about = data["about"] as? String
-    //                    else {
-    //                        continue
-    //                }
-    //
-    //                let newBook = Book(bookId: document.documentID , categoryId: categoryId, name: name, photo: photo, about: about)
-    //                if let newBook = newBook {
-    //                    // them du lieu vao mang sach
-    //                    books.append(newBook)
-    //                    //load khi co du lieu
-    //                    self.collection.reloadData()
-    //
-    //                    self.isCallApi = false
-    //                }
-    //            }
-    //        }
-    //    }
+    // goi khi chon 1 cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //        print("index mang la: \(indexPath[1])")
+        // gan du lieu sach vua chon de chuyen sang man hinh about
+        self.bookSelected = data[indexPath[1]]
+        // chuyen man hinh sang man hinh about
+        performSegue(withIdentifier: segueAboutViewIdentifier, sender: indexPath)
+        
+    }
     
     //Load du lieu khi keo xuong
     func scrollViewDidScroll(_ scrollView: UIScrollView){
@@ -173,6 +137,18 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
                     
                 }
             }
+        }
+    }
+    
+    // Thay doi noi dung nut back o man hinh tiep theo
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Trở về"
+        navigationItem.backBarButtonItem = backItem
+        
+        // Lay Destination
+        if let destination = segue.destination as? AboutViewController {
+            destination.book = bookSelected
         }
     }
 }

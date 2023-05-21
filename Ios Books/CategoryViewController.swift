@@ -16,15 +16,9 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
-    enum NavigationType {
-        case categoryDetail
-        
-    }
-    
-    var navigationType : NavigationType = .categoryDetail
-    
-    let categorysRef = Firestore.firestore().collection("categories")
-    
+
+//    let categorysRef = Firestore.firestore().collection("categories")
+    let service = FireBaseServices()
     private var categoryBook = [Category]()
     
     override func viewDidLoad() {
@@ -33,7 +27,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         getCategorys()
     }
@@ -41,50 +35,54 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     //
     func getCategorys(){
-        let query = self.categorysRef
-            .order(by: "created", descending: true)
-        loadDataFromFirebaseToCategories(query: query)
-    }
-    
-    
-    func loadDataFromFirebaseToCategories (query: Query) {
-        query.getDocuments { (snapshot, error) in
-            guard let snapshot = snapshot else {
-                print("Error fetching documents: \(error!)")
-                return
-            }
-            //            print("da lieu la \(String(describing: snapshot.documents.last?.data()["name"]))")
-            
-            // lay du lieu sach ra
-            for document in snapshot.documents {
-                let data = document.data()
-                
-                guard
-                    let name = data["name"] as? String,
-                    let photo = data["photo"] as? String
-                    
-                    else {
-                        continue
-                }
-                
-                let newCategory = Category(
-                    categoryId: document.documentID,
-                    name: name,
-                    photo: photo)
-                
-                
-                if let newCategory = newCategory {
-                    // them du lieu vao mang sach
-                    self.categoryBook.append(newCategory)
-                    // load lai view khi co du lieu
-                    self.tableView.reloadData()
-                    
-                }
-                
-                print("Da vo day")
-            }
+//        let query = self.categorysRef
+//            .order(by: "created", descending: true)
+//        loadDataFromFirebaseToCategories(query: query)
+        self.service.loadDataFromFirebaseToCategories { (data: [Category]) in
+            self.categoryBook = data
+            self.tableView.reloadData()
         }
     }
+    
+    
+//    func loadDataFromFirebaseToCategories (query: Query) {
+//        query.getDocuments { (snapshot, error) in
+//            guard let snapshot = snapshot else {
+//                print("Error fetching documents: \(error!)")
+//                return
+//            }
+//            //            print("da lieu la \(String(describing: snapshot.documents.last?.data()["name"]))")
+//
+//            // lay du lieu sach ra
+//            for document in snapshot.documents {
+//                let data = document.data()
+//
+//                guard
+//                    let name = data["name"] as? String,
+//                    let photo = data["photo"] as? String
+//
+//                    else {
+//                        continue
+//                }
+//
+//                let newCategory = Category(
+//                    categoryId: document.documentID,
+//                    name: name,
+//                    photo: photo)
+//
+//
+//                if let newCategory = newCategory {
+//                    // them du lieu vao mang sach
+//                    self.categoryBook.append(newCategory)
+//                    // load lai view khi co du lieu
+//                    self.tableView.reloadData()
+//
+//                }
+//
+////                print("Da vo day")
+//            }
+//        }
+//    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,15 +107,15 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     // MARK: An thanh dieu huong o man hinh dau tien
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -143,8 +141,6 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
                 destination.category = categoryBook[selecteđIndexPath.row]
                 
             }
-            //        }
-            //            }
         }
     }
 }

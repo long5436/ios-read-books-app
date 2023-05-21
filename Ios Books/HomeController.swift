@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     //MARK: Properties
     @IBOutlet weak var bookCollectionView: UICollectionView!
@@ -21,17 +21,18 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     //
     let arrayData: [String] = ["DSDSD"]
     
-    var limitBookQuery: Int = 9
+    var limitBookQuery: Int = 12
     var arrBook = [Book]()
     var arrBookBackup = [Book]()
     var cellMarginSize: Float = 5.0
     var isCallApi: Bool = false
-    var documentLast: Any?
+    var documentLast: DocumentSnapshot!
     let booksRef = Firestore.firestore().collection("books")
     var searching: Bool = false
     let bookCellReuseIdentifier: String = "BookCell"
     let segueAboutViewIdentifier: String = "HomeToAbout"
     var bookSelected: Book!
+    let firebaseService = FireBaseServices()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +41,22 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         // Thiết lập data source cho UICollectionView
         bookCollectionView.delegate = self
         bookCollectionView.dataSource = self
-        searchbar.delegate = self
+        //        searchbar.delegate = self
         
         //        let nib =  UINib(nibName: "BookCollectionViewCell", bundle: nil)
         //        bookCollectionView.register(nib, forCellWithReuseIdentifier: "BookCell")
+        
+        // lam title chu bu
+        navigationController?.navigationBar.prefersLargeTitles = true
+        //        navigationItem.largeTitleDisplayMode = .never
+        
+        // test searchBar in navigation
+        let searchbarController = UISearchController()
+        searchbarController.searchBar.placeholder = "Tìm kiếm sách"
+        searchbarController.searchBar.searchBarStyle = .minimal
+        searchbarController.searchResultsUpdater = self
+        navigationItem.searchController = searchbarController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         // Dang ky layout grid view
         self.setGridView()
@@ -54,30 +67,35 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    
     
     //MARK: Hien thuc ham uy quyen cho searchbar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //        print("tapped")
         
         // an ban phim
-        searchbar.resignFirstResponder()
+        //        searchbar.resignFirstResponder()
         searchBooks()
         
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0 {
-            if searching {
-                // tat trang thai dang tim kiem
-                searching = false
-                // lay lai mang sach ban dau
-                arrBook = Array(arrBookBackup)
-                // load lai du lieu collection
-                self.bookCollectionView.reloadData()
-                
-            }
-        }
-    }
+    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //        if searchBar.text?.count == 0 {
+    //            if searching {
+    //                // tat trang thai dang tim kiem
+    //                searching = false
+    //                // lay lai mang sach ban dau
+    //                arrBook = Array(arrBookBackup)
+    //                // load lai du lieu collection
+    //                self.bookCollectionView.reloadData()
+    //
+    //            }
+    //        }
+    //    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -109,7 +127,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     // goi khi chon 1 cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("index mang la: \(indexPath[1])")
+        //        print("index mang la: \(indexPath[1])")
         // gan du lieu sach vua chon de chuyen sang man hinh about
         self.bookSelected = arrBook[indexPath[1]]
         // chuyen man hinh sang man hinh about
@@ -118,15 +136,15 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: An thanh dieu huong o man hinh dau tien
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        navigationController?.setNavigationBarHidden(true, animated: animated)
+    //    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        super.viewWillDisappear(animated)
+    //        navigationController?.setNavigationBarHidden(false, animated: animated)
+    //    }
     
     
     
@@ -134,7 +152,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     func searchBooks() {
         // gan trang thai dang tim kiem
-        
         
         if let searchText = searchbar.text {
             print("Tu khoa la: \(searchText)")
@@ -145,63 +162,10 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
                 searching = true
             }
             
-            
-            let query = self.booksRef
-                .order(by: "created", descending: true)
-                .whereField("search_key", arrayContains: searchText)
-                .limit(to: limitBookQuery)
-            
-            var resultBooks = [Book]()
-            
-            query.getDocuments { (snapshot, error) in
-                if let error = error {
-                    print("Error fetching documents: \(error.localizedDescription)")
-                    self.arrBook = Array(resultBooks)
-                    self.bookCollectionView.reloadData()
-                    return
-                }
-                
-                guard let snapshot = snapshot, !snapshot.isEmpty else {
-                    print("No books found matching the search criteria")
-                    self.arrBook = Array(resultBooks)
-                    self.bookCollectionView.reloadData()
-                    return
-                }
-                
-                
-                
-                for document in snapshot.documents {
-                    let data = document.data()
-                    
-                    guard
-                        let categoryId = data["cate_id"] as? String,
-                        let name = data["name"] as? String,
-                        let photo = data["photo"] as? String,
-                        let about = data["about"] as? String
-                        else {
-                            continue
-                    }
-                    
-                    let newBook = Book(
-                        bookId: document.documentID,
-                        categoryId: categoryId,
-                        name: name,
-                        photo: photo,
-                        about: about
-                    )
-                    
-                    if let newBook = newBook {
-                        resultBooks.append(newBook)
-                    }
-                }
-                
-                print("Total number of books found: \(resultBooks.count)")
-                self.arrBook = Array(resultBooks)
+            self.firebaseService.searchBooks(searchText: searchText) { (data: [Book], documentLast :DocumentSnapshot?) in
+                self.arrBook = Array(data)
                 self.bookCollectionView.reloadData()
-                
-                
             }
-            
             
         }
     }
@@ -209,81 +173,65 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     //     Lay du lieu cac cuon sach tu firebase
     func getBooks(){
-        let query = self.booksRef
-            .order(by: "created", descending: true)
-            .limit(to: limitBookQuery)
         
-        loadDataFromFirebaseToBooks(query: query)
+        // lay documentLast hien tai
+        let last = self.documentLast ?? nil
+        
+        firebaseService.getDataBooks(documentLast: last) { (data: [Book], documentLast: DocumentSnapshot?) in
+            // luu lai documentLast
+            if let currentDocumentLast = documentLast {
+                self.documentLast = currentDocumentLast
+            }
+            // them du lieu vao mang sach
+            if last != nil {
+                self.arrBook = self.arrBook + data
+            } else {
+                self.arrBook = data
+            }
+            // load lai view khi co du lieu
+            self.bookCollectionView.reloadData()
+            // dat lai trang thai goi api
+            self.isCallApi = false
+        }
     }
     
     //     Lay du lieu cac cuon sach tu firebase trang tiep theo
-    func getBooksNextPage(){
-        if let last = self.documentLast {
-            let query = self.booksRef
-                .order(by: "created", descending: true)
-                .start(afterDocument: last as! DocumentSnapshot)
-                .limit(to: self.limitBookQuery)
-            
-            loadDataFromFirebaseToBooks(query: query)
-        }
-    }
-    
-    // xu ly du lieu luu vao books
-    func loadDataFromFirebaseToBooks (query: Query) {
-        query.getDocuments { (snapshot, error) in
-            guard let snapshot = snapshot else {
-                print("Error fetching documents: \(error!)")
-                return
-            }
-            
-            // Cap nhat document cuoi
-            self.documentLast = snapshot.documents.last
-            
-            //            print("da lieu la \(String(describing: snapshot.documents.last?.data()["name"]))")
-            
-            // lay du lieu sach ra
-            for document in snapshot.documents {
-                let data = document.data()
-                
-                guard
-                    let categoryId = data["cate_id"] as? String,
-                    let name = data["name"] as? String,
-                    let photo = data["photo"] as? String,
-                    let about = data["about"] as? String
-                    else {
-                        continue
-                }
-                
-                let newBook = Book(bookId: document.documentID , categoryId: categoryId, name: name, photo: photo, about: about)
-                if let newBook = newBook {
-                    // them du lieu vao mang sach
-                    self.arrBook.append(newBook)
-                    // load lai view khi co du lieu
-                    self.bookCollectionView.reloadData()
-                    // dat lai trang thai goi api
-                    self.isCallApi = false
-                }
-            }
-        }
-    }
-    
+    //    func getBooksNextPage(){
+    //        if let last = self.documentLast {
+    //            // set trang thai dang goi api
+    //            self.isCallApi = true
+    //            firebaseService.getDataBooks(documentLast: last) { (data: [Book], documentLast: DocumentSnapshot?) in
+    //                // luu lai documentLast
+    //                if let currentDocumentLast = documentLast {
+    //                    self.documentLast = currentDocumentLast
+    //                }
+    //                // them du lieu vao mang sach
+    //                self.arrBook = self.arrBook + data
+    //                // load lai view khi co du lieu
+    //                self.bookCollectionView.reloadData()
+    //                // dat lai trang thai goi api
+    //                self.isCallApi = false
+    //            }
+    //        }
+    //    }
     
     // Load them du lieu khi keo xuong cuoi
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         
-        if offsetY > contentHeight - scrollView.frame.height {
+        if offsetY + 20 > contentHeight - scrollView.frame.height {
             
             if !isCallApi {
                 // dat trang thai dang goi api bang true
                 isCallApi = true
                 // goi api lay them du lieu
-                getBooksNextPage()
+                //                getBooksNextPage()
+                getBooks()
             }
             
             // an ban phim
-            searchbar.resignFirstResponder()
+            //            searchbar.resignFirstResponder()
             
         }
     }
@@ -300,9 +248,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             destination.book = bookSelected
         }
     }
-    
-    
-    
 }
 
 extension HomeController: UICollectionViewDelegateFlowLayout {
