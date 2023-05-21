@@ -18,6 +18,7 @@ class ReadBookViewController: UIViewController {
     @IBOutlet weak var btnNext: UIBarButtonItem!
     @IBOutlet weak var btnDecreaseFontSize: UIBarButtonItem!
     @IBOutlet weak var btnEncreaseFontSize: UIBarButtonItem!
+    
     var book: Book!
     var fontSize: CGFloat = 17
     var page: Int = 1
@@ -45,7 +46,8 @@ class ReadBookViewController: UIViewController {
         
         setPageTitle()
         bookContentTextView.font = UIFont(name: "NotoSerif", size: fontSize)
-        
+        bookContentTextView.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 100, right: 20)
+    
         // goi ham lay du lieu
         loadDataBookPage(page: page, statusPage: .current)
         loadDataBookPage(page: page + 1, statusPage: .next)
@@ -54,7 +56,9 @@ class ReadBookViewController: UIViewController {
         if page == 1 {
             btnPrev.isEnabled = false
         }
+        
     }
+
     
     // Dat trang tren tieu de
     func setPageTitle() {
@@ -228,7 +232,6 @@ class ReadBookViewController: UIViewController {
         }
 //        self.present(alert, animated: true)
     }
-    
     
     /*
      // MARK: - Navigation

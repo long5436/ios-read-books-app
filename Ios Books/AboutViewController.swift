@@ -22,6 +22,10 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         bookImage.layer.cornerRadius = 4
+        btnReadBook.layer.cornerRadius = 8
+        bookAbout.textContainer.maximumNumberOfLines = 0
+        bookAbout.textContainerInset = UIEdgeInsets(top: 20, left: -5, bottom: 20, right: -5)
+        
         
         // load du lieu sach len man hinh
         if let book = book {
@@ -31,7 +35,7 @@ class AboutViewController: UIViewController {
             bookAbout.text = book.getAbout()
         }
         
-        btnReadBook.layer.cornerRadius = 8
+        
     }
     
     // Nhan vao nut doc sach chuyen sang man hinh doc sach
