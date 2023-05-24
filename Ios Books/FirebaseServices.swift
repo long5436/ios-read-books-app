@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseCore
 import FirebaseFirestore
 
 class FireBaseServices {
@@ -15,6 +15,7 @@ class FireBaseServices {
     private let bookPageRef = Firestore.firestore().collection("book_contents")
     private let bookRef = Firestore.firestore().collection("books")
     private let categoryRef = Firestore.firestore().collection("categories")
+    private let historyRef = Firestore.firestore().collection("histories")
     
     
     func getBookPage(bookId: String, page: Int, onCompletion: @escaping (_ content: String) -> Void) -> Void {
@@ -164,5 +165,68 @@ class FireBaseServices {
                 .limit(to: 12)
             self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
         }
+    }
+    
+    func getBook(userUid: String, bookId: String, onCompletion: @escaping (_ books: [Book], _ documentLast: DocumentSnapshot?) -> Void) -> Void {
+        
+        let query = self.bookRef
+            .whereField("uid", isEqualTo: userUid)
+            .whereField("book_id", isEqualTo: bookId)
+            .limit(to: 1)
+        
+        self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
+    }
+    
+    func getHistory(userUid: String, onCompletion: @escaping (_ bookId: String, _ page: Int) -> Void) -> Void {
+        
+        let query = self.historyRef
+            .whereField("uid", isEqualTo: userUid)
+            .limit(to: 1)
+        
+        query.getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else {
+                print("Error fetching documents: \(error!)")
+                return
+            }
+            
+            // lay du lieu sach ra
+            for document in snapshot.documents {
+                let data = document.data()
+                
+                guard
+                    let bookId = data["book_id"] as? String,
+                    let page = data["page"] as? Int
+                    
+                    else {
+                        continue
+                }
+                
+                onCompletion(bookId, Int(page))
+            }
+        }
+    }
+    
+    func updateHistory(userUid: String) {
+        
+        print("userUid \(userUid)")
+        
+        if !userUid.isEmpty {
+            
+            let data: [String: Any] = [
+                "uid": userUid,
+                "book_id": "UvkDKG5hgCYRzq6YYdq6",
+                "page": "3"
+            ]
+            
+            historyRef.addDocument(data: data) { (error) in
+                if let error = error {
+                    print("Lỗi khi thêm dữ liệu: \(error.localizedDescription)")
+                } else {
+                    print("Dữ liệu đã được thêm thành công vào collection 'histories'")
+                }
+            }
+            
+        }
+        
     }
 }

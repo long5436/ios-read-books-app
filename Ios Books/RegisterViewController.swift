@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var textPassword: UITextField!
     @IBOutlet weak var textRePassword: UITextField!
     @IBOutlet weak var btnRegister: UIButton!
+    let firebaseAuthService = FirebaseAuthService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,21 @@ class RegisterViewController: UIViewController {
     }
     
 
+    @IBAction func btnRegisterTap(_ sender: Any) {
+        let email = textEmail.text ?? ""
+        let pass:String = textPassword.text ?? ""
+        let rePass:String = textRePassword.text ?? ""
+        
+        if !email.isEmpty && !pass.isEmpty && pass.isEqual(rePass) {
+            print("Dang ky")
+            firebaseAuthService.register(email: email, password: pass) { (status) in
+                
+            }
+        }
+        else {
+            print("Nhap chua chinh xac")
+        }
+    }
     /*
     // MARK: - Navigation
 
