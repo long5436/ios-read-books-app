@@ -46,6 +46,7 @@
 		FD544EAC2A1E1E150069E8FC /* FirebaseStorage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD544EAB2A1E1E150069E8FC /* FirebaseStorage.xcframework */; };
 		FD67F5EF2A101F3700ACBCE6 /* ReadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */; };
 		FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B99FD2A082BD1005C5B7E /* Book.swift */; };
+		FD6FCD552A1AAC750088B8D8 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FCD542A1AAC750088B8D8 /* FirebaseAuthService.swift */; };
 		FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */; };
 		FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */; };
 		FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */; };
@@ -126,6 +127,7 @@
 		FD544EAB2A1E1E150069E8FC /* FirebaseStorage.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseStorage.xcframework; path = Firebase/FirebaseStorage/FirebaseStorage.xcframework; sourceTree = "<group>"; };
 		FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookViewController.swift; sourceTree = "<group>"; };
 		FD6B99FD2A082BD1005C5B7E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		FD6FCD542A1AAC750088B8D8 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				FDC5C59F2A1164C7008B5661 /* FirebaseServices.swift */,
+				FD6FCD542A1AAC750088B8D8 /* FirebaseAuthService.swift */,
 			);
 			name = FirebaseServices;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7287EE2A0D162A0058745C /* CategoryViewController.swift in Sources */,
+				FD6FCD552A1AAC750088B8D8 /* FirebaseAuthService.swift in Sources */,
 				FD36704229FAD6CF002E5AED /* HomeController.swift in Sources */,
 				1C0718612A0C7D8200677845 /* TableViewCell.swift in Sources */,
 				FD22656E2A176E3900E4852C /* (null) in Sources */,
