@@ -10,6 +10,8 @@
 		1C07185E2A0C7B5A00677845 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07185D2A0C7B5A00677845 /* Category.swift */; };
 		1C0718612A0C7D8200677845 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0718602A0C7D8200677845 /* TableViewCell.swift */; };
 		1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */; };
+		1C5AD8F32A1C965E005C95BD /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5AD8F22A1C965E005C95BD /* ResetPassViewController.swift */; };
+		1C725B812A1A6F2A00C27AED /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C725B802A1A6F2A00C27AED /* AccountViewController.swift */; };
 		1C7287EE2A0D162A0058745C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7287ED2A0D162A0058745C /* CategoryViewController.swift */; };
 		5D2F5A932FB891F9C262CA42 /* Pods_Ios_BooksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AE7223990282C43D805C55 /* Pods_Ios_BooksTests.framework */; };
 		62A2678778435371857628DE /* Pods_Ios_Books_Ios_BooksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08CDCF6DA5D832CC7DEA724 /* Pods_Ios_Books_Ios_BooksUITests.framework */; };
@@ -58,6 +60,8 @@
 		1C07185D2A0C7B5A00677845 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		1C0718602A0C7D8200677845 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailController.swift; sourceTree = "<group>"; };
+		1C5AD8F22A1C965E005C95BD /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
+		1C725B802A1A6F2A00C27AED /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1C7287ED2A0D162A0058745C /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		51087ADFFF4856465832372E /* Pods-Ios Books-Ios BooksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ios Books-Ios BooksUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ios Books-Ios BooksUITests/Pods-Ios Books-Ios BooksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		59AD3F412CA27D52983AF070 /* Pods-Ios Books.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ios Books.debug.xcconfig"; path = "Target Support Files/Pods-Ios Books/Pods-Ios Books.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				FD3106392A17D97000367736 /* RegisterViewController.swift */,
+				1C5AD8F22A1C965E005C95BD /* ResetPassViewController.swift */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				1C7287ED2A0D162A0058745C /* CategoryViewController.swift */,
 				1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */,
 				FD31063B2A17DF1000367736 /* HistoryViewController.swift */,
+				1C725B802A1A6F2A00C27AED /* AccountViewController.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -540,10 +546,12 @@
 				FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */,
 				FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */,
 				FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */,
+				1C725B812A1A6F2A00C27AED /* AccountViewController.swift in Sources */,
 				FDC5C5A02A1164C7008B5661 /* FirebaseServices.swift in Sources */,
 				FD31063A2A17D97000367736 /* RegisterViewController.swift in Sources */,
 				FD36704029FAD6CF002E5AED /* SceneDelegate.swift in Sources */,
 				FD31063C2A17DF1000367736 /* HistoryViewController.swift in Sources */,
+				1C5AD8F32A1C965E005C95BD /* ResetPassViewController.swift in Sources */,
 				FD67F5EF2A101F3700ACBCE6 /* ReadBookViewController.swift in Sources */,
 				1C07185E2A0C7B5A00677845 /* Category.swift in Sources */,
 			);
