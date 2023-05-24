@@ -40,7 +40,7 @@
                                             <size key="itemSize" width="128" height="202"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="Vkh-fu-ACs" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
@@ -218,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8MU-wl-XJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660.8695652173915" y="-311.38392857142856"/>
+            <point key="canvasLocation" x="1706" y="-310"/>
         </scene>
         <!--Trang-->
         <scene sceneID="P2e-ka-B4P">
@@ -389,7 +389,7 @@
                                     <size key="itemSize" width="128" height="202"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="0qr-T4-uqy" customClass="BookCollectionViewCell" customModule="Ios_Books" customModuleProvider="target">
@@ -1080,7 +1080,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XVJ-n0-nzO"/>
+        <segue reference="xZP-WD-GZM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookImageDefault" width="79" height="93.5"/>

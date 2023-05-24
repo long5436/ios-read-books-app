@@ -129,7 +129,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     //  In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Chuyen man hinh")
+//        print("Chuyen man hinh")
         
         let backItem = UIBarButtonItem()
         backItem.title = "Trở về"

@@ -14,12 +14,12 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     //MARK: Properties
     @IBOutlet weak var bookCollectionView: UICollectionView!
-    @IBOutlet weak var searchbar: UISearchBar!
+    //    @IBOutlet weak var searchbar: UISearchBar!
     
     // du lieu gia
     //    let arrayData: [String] = ["sdd", "DSDSD", "sdd", "DSDSD", "sdd", "DSDSD", "sdd", "DSDSD"]
     //
-    let arrayData: [String] = ["DSDSD"]
+    //    let arrayData: [String] = ["DSDSD"]
     
     var limitBookQuery: Int = 12
     var arrBook = [Book]()
@@ -33,6 +33,8 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     let segueAboutViewIdentifier: String = "HomeToAbout"
     var bookSelected: Book!
     let firebaseService = FireBaseServices()
+    let searchbarController = UISearchController(searchResultsController: nil)
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,54 +50,16 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
         // lam title chu bu
         navigationController?.navigationBar.prefersLargeTitles = true
-        //        navigationItem.largeTitleDisplayMode = .never
         
-        // test searchBar in navigation
-        let searchbarController = UISearchController()
-        searchbarController.searchBar.placeholder = "Tìm kiếm sách"
-        searchbarController.searchBar.searchBarStyle = .minimal
-        searchbarController.searchResultsUpdater = self
-        navigationItem.searchController = searchbarController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        // tao searchBar
+        setupSearchBar()
         
         // Dang ky layout grid view
         self.setGridView()
         
-        
         // Load du lieu sach
         getBooks()
-        
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-    
-    
-    //MARK: Hien thuc ham uy quyen cho searchbar
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        print("tapped")
-        
-        // an ban phim
-        //        searchbar.resignFirstResponder()
-        searchBooks()
-        
-    }
-    
-    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    //        if searchBar.text?.count == 0 {
-    //            if searching {
-    //                // tat trang thai dang tim kiem
-    //                searching = false
-    //                // lay lai mang sach ban dau
-    //                arrBook = Array(arrBookBackup)
-    //                // load lai du lieu collection
-    //                self.bookCollectionView.reloadData()
-    //
-    //            }
-    //        }
-    //    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -110,7 +74,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     func setGridView() {
         let flow = bookCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flow.minimumInteritemSpacing = CGFloat(self.cellMarginSize)
-        flow.minimumLineSpacing = CGFloat(self.cellMarginSize * 2)
+        flow.minimumLineSpacing = CGFloat(self.cellMarginSize * 2 + 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -135,6 +99,77 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    func setupSearchBar() {
+        // searchBar in navigation
+        searchbarController.searchBar.delegate = self
+        searchbarController.searchBar.placeholder = "Tìm kiếm sách"
+        searchbarController.searchBar.searchBarStyle = .minimal
+        searchbarController.searchResultsUpdater = self
+        navigationItem.searchController = searchbarController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        searchbarController.obscuresBackgroundDuringPresentation = false
+        // Tùy chỉnh văn bản của nút "Cancel"
+        searchbarController.searchBar.setValue("Huỷ", forKey: "cancelButtonText")
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let value = searchController.searchBar.text else {
+            self.setDataBackup()
+            return
+        }
+        
+        // thuc hien cho nguoi dung go xong moi xu ly tiep
+        timer?.invalidate()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+            if value.isEmpty {
+                self.setDataBackup()
+            } else {
+                self.searchBooks(value: value)
+            }
+            
+//            print("value la: \(value)")
+        })
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //        print("Da tap vao nut cancel")
+        setDataBackup()
+    }
+    
+    
+    
+    //MARK: Hien thuc ham uy quyen cho searchbar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //        print("tapped")
+        
+        // an ban phim
+        //                searchbar.resignFirstResponder()
+        
+        if let value = searchbarController.searchBar.text {
+            //            print("value: \(value)")
+            searchBooks(value: value)
+        }
+    }
+    
+    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //        if searchBar.text?.count == 0 {
+    //            if searching {
+    //                // tat trang thai dang tim kiem
+    //                searching = false
+    //                // lay lai mang sach ban dau
+    //                arrBook = Array(arrBookBackup)
+    //                // load lai du lieu collection
+    //                self.bookCollectionView.reloadData()
+    //
+    //            }
+    //        }
+    //    }
+    
+    
+    
     // MARK: An thanh dieu huong o man hinh dau tien
     //    override func viewWillAppear(_ animated: Bool) {
     //        super.viewWillAppear(animated)
@@ -146,27 +181,28 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     //        navigationController?.setNavigationBarHidden(false, animated: animated)
     //    }
     
+    func setDataBackup() {
+        if self.searching {
+            // tat trang thai dang tim kiem
+            self.searching = false
+            // lay lai mang sach ban dau
+            self.arrBook = Array(self.arrBookBackup)
+            // load lai du lieu collection
+            self.bookCollectionView.reloadData()
+            
+        }
+    }
     
-    
-    //     Lay du lieu cac cuon sach tu firebase theo tu khoa tim kiem
-    
-    func searchBooks() {
-        // gan trang thai dang tim kiem
+    // Lay du lieu cac cuon sach tu firebase theo tu khoa tim kiem
+    func searchBooks(value: String) {
+        if !searching {
+            arrBookBackup = Array(arrBook)
+            searching = true
+        }
         
-        if let searchText = searchbar.text {
-            print("Tu khoa la: \(searchText)")
-            
-            // luu lai mang sach
-            if !searching {
-                arrBookBackup = Array(arrBook)
-                searching = true
-            }
-            
-            self.firebaseService.searchBooks(searchText: searchText) { (data: [Book], documentLast :DocumentSnapshot?) in
-                self.arrBook = Array(data)
-                self.bookCollectionView.reloadData()
-            }
-            
+        self.firebaseService.searchBooks(searchText: value) { (data: [Book], documentLast :DocumentSnapshot?) in
+            self.arrBook = Array(data)
+            self.bookCollectionView.reloadData()
         }
     }
     
@@ -258,6 +294,6 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
         
         //        print("Kich thuoc la:\(bookCollectionView.frame.width) : \(numberOfItemsPerRow) : \(collectionView.frame.width): \(itemWidth)")
         
-        return CGSize(width: itemWidth, height: (itemWidth * 2) - (itemWidth / 3))
+        return CGSize(width: itemWidth, height: (itemWidth * 2) + 2 - (itemWidth / 3))
     }
 }
