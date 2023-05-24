@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestore
 
 class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate
 {
