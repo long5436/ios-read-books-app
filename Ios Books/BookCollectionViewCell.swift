@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BookCollectionViewCell: UICollectionViewCell {
     //MARK: Properties
@@ -24,16 +25,14 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     // khoi tao du lieu cho cell sach
     func setData(book: Book) {
-        
         self.book = book
         
         if let label = bookName {
             label.text = book.getName()
         }
         
-        if let image = bookImage {
-            image.getImageFromCach(imageName: book.getPhoto(), uiImage: image)
-            
+        if let image = self.bookImage {
+            image.loadImage(pathName: book.getPhoto())
         }
     }
 }

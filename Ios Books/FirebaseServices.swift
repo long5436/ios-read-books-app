@@ -16,6 +16,7 @@ class FireBaseServices {
     private let bookRef = Firestore.firestore().collection("books")
     private let categoryRef = Firestore.firestore().collection("categories")
     private let historyRef = Firestore.firestore().collection("histories")
+    private let limitBookQuery = 12
     
     
     func getBookPage(bookId: String, page: Int, onCompletion: @escaping (_ content: String) -> Void) -> Void {
@@ -83,14 +84,14 @@ class FireBaseServices {
             let query = self.bookRef
                 .start(afterDocument: last)
                 .whereField("cate_id", isEqualTo: cateId)
-                .limit(to: 12)
+                .limit(to: self.limitBookQuery)
             
             self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
         }
         else {
             let query = self.bookRef
                 .whereField("cate_id", isEqualTo: cateId)
-                .limit(to: 12)
+                .limit(to: self.limitBookQuery)
             
             self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
         }
@@ -145,7 +146,7 @@ class FireBaseServices {
         let query = self.bookRef
             .order(by: "created", descending: true)
             .whereField("search_key", arrayContains: searchText)
-            .limit(to: 12)
+            .limit(to: self.limitBookQuery)
         
         self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
         
@@ -157,12 +158,12 @@ class FireBaseServices {
             let query = self.bookRef
                 .order(by: "created", descending: true)
                 .start(afterDocument: last)
-                .limit(to: 12)
+                .limit(to: self.limitBookQuery)
             self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
         } else {
             let query = self.bookRef
                 .order(by: "created", descending: true)
-                .limit(to: 12)
+                .limit(to: self.limitBookQuery)
             self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
         }
     }

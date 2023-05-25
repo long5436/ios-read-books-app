@@ -30,7 +30,7 @@ class AboutViewController: UIViewController {
         // load du lieu sach len man hinh
         if let book = book {
             //            print("ten sach la: \(book.getName())")
-            bookImage.getImageFromCach(imageName: book.getPhoto(), uiImage: bookImage)
+            bookImage.getImageFromCache(imageName: book.getPhoto())
             bookLabel.text = book.getName()
             bookAbout.text = book.getAbout()
         }
