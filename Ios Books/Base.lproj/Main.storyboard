@@ -1148,11 +1148,18 @@
                     <navigationItem key="navigationItem" title="Đăng ký"
                         largeTitleDisplayMode="always" id="Vfl-oi-Wir" />
                     <connections>
+<<<<<<< Updated upstream
                         <outlet property="btnRegister" destination="3pC-8z-Es6" id="z21-vA-DPi" />
                         <outlet property="textEmail" destination="cym-mo-rc7" id="tQe-nq-cvW" />
                         <outlet property="textPassword" destination="X39-iY-5EV" id="hQ8-2e-ome" />
                         <outlet property="textRePassword" destination="OOM-UP-SEA" id="7bZ-CT-qFT" />
                         <segue destination="Vmx-a2-tF9" kind="show" id="u3b-Zq-uag" />
+=======
+                        <outlet property="btnRegister" destination="3pC-8z-Es6" id="z21-vA-DPi"/>
+                        <outlet property="textEmail" destination="cym-mo-rc7" id="tQe-nq-cvW"/>
+                        <outlet property="textPassword" destination="X39-iY-5EV" id="hQ8-2e-ome"/>
+                        <outlet property="textRePassword" destination="OOM-UP-SEA" id="7bZ-CT-qFT"/>
+>>>>>>> Stashed changes
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZV-pn-yyR"
@@ -1161,8 +1168,247 @@
             </objects>
             <point key="canvasLocation" x="3153.6231884057975" y="1682.1428571428571" />
         </scene>
+<<<<<<< Updated upstream
         <!--Danh
         mục-->
+=======
+        <!--Quên mật khẩu-->
+        <scene sceneID="baf-vw-HiL">
+            <objects>
+                <viewController id="Vmx-a2-tF9" customClass="ResetPassViewController" customModule="Ios_Books" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="agB-Ow-Sad">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Xuv-J7-nEU">
+                                <rect key="frame" x="20" y="44" width="374" height="147.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7D5-X8-3Mh">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="63.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-DX-b5Z">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="63.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rG-mk-T5R">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OI0-qk-OpB">
+                                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="h4Z-DX-b5Z" secondAttribute="trailing" id="8il-Ga-qOl"/>
+                                            <constraint firstItem="h4Z-DX-b5Z" firstAttribute="leading" secondItem="7D5-X8-3Mh" secondAttribute="leading" id="hEb-oV-ZrR"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VI7-TD-KW8">
+                                        <rect key="frame" x="0.0" y="103.5" width="374" height="44"/>
+                                        <color key="backgroundColor" red="0.348175972" green="0.68478961660000004" blue="1" alpha="0.29189590669999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="XnQ-Qo-J9M"/>
+                                        </constraints>
+                                        <state key="normal" title="Xác nhận"/>
+                                        <connections>
+                                            <action selector="forgotPassButton:" destination="Vmx-a2-tF9" eventType="touchUpInside" id="73c-Ge-2C5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7D5-X8-3Mh" firstAttribute="leading" secondItem="Xuv-J7-nEU" secondAttribute="leading" id="7H2-7J-Nfh"/>
+                                    <constraint firstItem="VI7-TD-KW8" firstAttribute="leading" secondItem="Xuv-J7-nEU" secondAttribute="leading" id="LTg-rx-olr"/>
+                                    <constraint firstAttribute="trailing" secondItem="VI7-TD-KW8" secondAttribute="trailing" id="ecF-3R-d0h"/>
+                                    <constraint firstAttribute="trailing" secondItem="7D5-X8-3Mh" secondAttribute="trailing" id="wln-Id-Gop"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Xuv-J7-nEU" firstAttribute="top" secondItem="hDA-CK-2Xh" secondAttribute="top" id="PiB-9s-viV"/>
+                            <constraint firstItem="Xuv-J7-nEU" firstAttribute="leading" secondItem="hDA-CK-2Xh" secondAttribute="leading" constant="20" id="TXo-1K-myj"/>
+                            <constraint firstItem="hDA-CK-2Xh" firstAttribute="trailing" secondItem="Xuv-J7-nEU" secondAttribute="trailing" constant="20" id="paf-wW-W1s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hDA-CK-2Xh"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Quên mật khẩu" id="Efb-CQ-33o"/>
+                    <connections>
+                        <outlet property="textFieldEmail" destination="OI0-qk-OpB" id="k14-aR-CcE"/>
+                        <segue destination="uPB-2c-BX7" kind="show" id="uho-fa-h0b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dxw-Xd-LKe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4535" y="1681"/>
+        </scene>
+        <!--Xác nhận mã-->
+        <scene sceneID="Qgj-xE-dlf">
+            <objects>
+                <viewController id="uPB-2c-BX7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qot-G8-3eM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="8oL-d1-5de">
+                                <rect key="frame" x="20" y="0.0" width="374" height="147.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OkT-XE-zur">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="63.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="rLk-hZ-95N">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="63.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mã code(Mã code được gửi đến email)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbp-j1-PLf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhâp mã code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LqL-7H-ool">
+                                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="rLk-hZ-95N" secondAttribute="trailing" id="iam-hs-DWP"/>
+                                            <constraint firstItem="rLk-hZ-95N" firstAttribute="leading" secondItem="OkT-XE-zur" secondAttribute="leading" id="tbs-zQ-vyn"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxn-tU-wnE">
+                                        <rect key="frame" x="0.0" y="103.5" width="374" height="44"/>
+                                        <color key="backgroundColor" red="0.348175972" green="0.68478961660000004" blue="1" alpha="0.29189590669999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="8Dy-Sf-Ye1"/>
+                                        </constraints>
+                                        <state key="normal" title="Xác nhận"/>
+                                        <connections>
+                                            <action selector="readBookTap:" destination="cPo-8O-7FT" eventType="touchUpInside" id="GOf-ct-zwF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wxn-tU-wnE" firstAttribute="leading" secondItem="8oL-d1-5de" secondAttribute="leading" id="CX0-bq-2PL"/>
+                                    <constraint firstAttribute="trailing" secondItem="wxn-tU-wnE" secondAttribute="trailing" id="lMQ-aa-wWb"/>
+                                    <constraint firstItem="OkT-XE-zur" firstAttribute="leading" secondItem="8oL-d1-5de" secondAttribute="leading" id="uvK-aG-4Qh"/>
+                                    <constraint firstAttribute="trailing" secondItem="OkT-XE-zur" secondAttribute="trailing" id="vqz-ld-gzU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8oL-d1-5de" firstAttribute="top" secondItem="yJe-h0-DZL" secondAttribute="top" id="G4a-1x-u7n"/>
+                            <constraint firstItem="yJe-h0-DZL" firstAttribute="trailing" secondItem="8oL-d1-5de" secondAttribute="trailing" constant="20" id="H58-hp-qat"/>
+                            <constraint firstItem="8oL-d1-5de" firstAttribute="leading" secondItem="yJe-h0-DZL" secondAttribute="leading" constant="20" id="fTJ-VY-0Zn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yJe-h0-DZL"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Xác nhận mã" id="JVn-F8-t8U"/>
+                    <connections>
+                        <segue destination="uc8-Cz-Moq" kind="show" id="e9E-qn-AtK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRT-J8-i8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5314" y="1681"/>
+        </scene>
+        <!--Tạo mật khẩu mới-->
+        <scene sceneID="4yz-hW-SmG">
+            <objects>
+                <viewController id="uc8-Cz-Moq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tkq-XY-PHs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="BzW-2u-MdT">
+                                <rect key="frame" x="20" y="0.0" width="374" height="231"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="toX-kb-7Su">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="147"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Zsk-ag-uWf">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="63.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhập mật khẩu mới" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Zi-AT-3vq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập mật khẩu mới" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Udd-m8-SQz">
+                                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="1bk-oi-GIA">
+                                                <rect key="frame" x="0.0" y="83.5" width="374" height="63.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhập lại mật khẩu mới" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dom-yC-JgI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập lại mật khẩu mới" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wqA-Mq-Yyx">
+                                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1bk-oi-GIA" secondAttribute="trailing" id="LE8-xB-ygy"/>
+                                            <constraint firstItem="Zsk-ag-uWf" firstAttribute="leading" secondItem="toX-kb-7Su" secondAttribute="leading" id="lqj-Hl-mJw"/>
+                                            <constraint firstItem="1bk-oi-GIA" firstAttribute="leading" secondItem="toX-kb-7Su" secondAttribute="leading" id="tk1-sP-Afg"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zsk-ag-uWf" secondAttribute="trailing" id="vQN-BZ-hEG"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UY-xW-78l">
+                                        <rect key="frame" x="0.0" y="187" width="374" height="44"/>
+                                        <color key="backgroundColor" red="0.348175972" green="0.68478961660000004" blue="1" alpha="0.29189590669999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="MdA-aW-Lnu"/>
+                                        </constraints>
+                                        <state key="normal" title="Đăng ký"/>
+                                        <connections>
+                                            <action selector="readBookTap:" destination="cPo-8O-7FT" eventType="touchUpInside" id="OB2-Ii-sJZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="toX-kb-7Su" firstAttribute="leading" secondItem="BzW-2u-MdT" secondAttribute="leading" id="6HN-bv-z6D"/>
+                                    <constraint firstItem="5UY-xW-78l" firstAttribute="leading" secondItem="BzW-2u-MdT" secondAttribute="leading" id="Gc7-qY-Osq"/>
+                                    <constraint firstAttribute="trailing" secondItem="5UY-xW-78l" secondAttribute="trailing" id="wv8-2M-wPr"/>
+                                    <constraint firstAttribute="trailing" secondItem="toX-kb-7Su" secondAttribute="trailing" id="zFo-v5-xSC"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BzW-2u-MdT" firstAttribute="top" secondItem="xbc-B0-kV8" secondAttribute="top" id="7bo-DQ-MHY"/>
+                            <constraint firstItem="BzW-2u-MdT" firstAttribute="leading" secondItem="xbc-B0-kV8" secondAttribute="leading" constant="20" id="K7c-PC-VgV"/>
+                            <constraint firstItem="xbc-B0-kV8" firstAttribute="trailing" secondItem="BzW-2u-MdT" secondAttribute="trailing" constant="20" id="rjE-pH-Ctl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xbc-B0-kV8"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tạo mật khẩu mới" id="BAl-Ef-D8V"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZy-P8-qfn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6181" y="1681"/>
+        </scene>
+        <!--Danh mục-->
+>>>>>>> Stashed changes
         <scene sceneID="anG-uf-KB4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hph-4Q-ZFx"
