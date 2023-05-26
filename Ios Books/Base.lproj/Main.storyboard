@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ya4-bx-2oA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ya4-bx-2oA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -34,7 +37,7 @@
                                     </searchBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-pK-uM9">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="896"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <gestureRecognizers/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jrD-M1-hVT">
                                             <size key="itemSize" width="128" height="202"/>
@@ -64,6 +67,7 @@
                                                         </imageView>
                                                     </subviews>
                                                 </view>
+                                                <viewLayoutGuide key="safeArea" id="5iO-3D-feB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="JgB-2r-K6K" secondAttribute="trailing" id="5l5-7F-IgK"/>
@@ -73,7 +77,6 @@
                                                     <constraint firstItem="JgB-2r-K6K" firstAttribute="leading" secondItem="Vkh-fu-ACs" secondAttribute="leading" id="Vf5-KA-Kbk"/>
                                                     <constraint firstItem="JgB-2r-K6K" firstAttribute="top" secondItem="Vkh-fu-ACs" secondAttribute="top" id="vyX-1p-N2q"/>
                                                 </constraints>
-                                                <viewLayoutGuide key="safeArea" id="5iO-3D-feB"/>
                                                 <size key="customSize" width="128" height="202"/>
                                                 <connections>
                                                     <outlet property="bookImage" destination="JgB-2r-K6K" id="Aa7-ZJ-v0C"/>
@@ -94,14 +97,14 @@
                                 </variation>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7sO-aI-zVq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CyU-rC-jlm" firstAttribute="leading" secondItem="Tfo-Lj-24t" secondAttribute="leadingMargin" id="BKz-DQ-l9n"/>
                             <constraint firstItem="CyU-rC-jlm" firstAttribute="top" secondItem="Tfo-Lj-24t" secondAttribute="topMargin" id="IiP-an-IMK"/>
                             <constraint firstAttribute="bottomMargin" secondItem="CyU-rC-jlm" secondAttribute="bottom" id="v1N-hM-L9P"/>
                             <constraint firstItem="CyU-rC-jlm" firstAttribute="trailing" secondItem="Tfo-Lj-24t" secondAttribute="trailingMargin" id="zGn-JL-Dfb"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7sO-aI-zVq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sách mới" id="22t-ZW-29y"/>
                     <connections>
@@ -157,7 +160,7 @@
                                                             <constraint firstItem="nVI-WJ-8TB" firstAttribute="leading" secondItem="fxU-Kc-Hgk" secondAttribute="leading" id="aRw-OP-pwU"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VH-uJ-5N2">
+                                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VH-uJ-5N2">
                                                         <rect key="frame" x="197" y="110" width="177" height="40"/>
                                                         <color key="backgroundColor" red="0.34817597197396732" green="0.684789616639635" blue="1" alpha="0.29189590669014087" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Đọc sách"/>
@@ -169,8 +172,8 @@
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySv-Tc-XRz">
                                                 <rect key="frame" x="0.0" y="279.5" width="374" height="35.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
@@ -193,14 +196,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="iyo-Wj-Bam"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="s9A-iD-jsI" secondAttribute="bottom" id="37Z-Ee-HmP"/>
                             <constraint firstAttribute="trailing" secondItem="s9A-iD-jsI" secondAttribute="trailing" id="Ltc-Iw-KdY"/>
                             <constraint firstItem="s9A-iD-jsI" firstAttribute="leading" secondItem="oqX-9H-8fS" secondAttribute="leading" id="biB-dX-kCI"/>
                             <constraint firstItem="s9A-iD-jsI" firstAttribute="top" secondItem="oqX-9H-8fS" secondAttribute="top" id="uSg-zO-7ao"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="iyo-Wj-Bam"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="rKi-VV-wjX"/>
@@ -230,7 +233,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-5" maximumZoomScale="10" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-aI-Vu1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="NotoSerif" family="Noto Serif" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
@@ -267,9 +270,11 @@
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="8rg-RF-P6V"/>
                                 </items>
+                                <toolbarAppearance key="compactAppearance"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FHA-Aj-WGz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="WnP-aI-Vu1" secondAttribute="bottom" id="6tw-gw-PFx"/>
                             <constraint firstItem="WnP-aI-Vu1" firstAttribute="centerX" secondItem="7os-B3-lIN" secondAttribute="centerX" id="JvW-ig-BND"/>
@@ -279,7 +284,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="XxF-mm-HTb" secondAttribute="trailing" constant="-20" id="tQZ-9O-T9X"/>
                             <constraint firstItem="XxF-mm-HTb" firstAttribute="leading" secondItem="7os-B3-lIN" secondAttribute="leadingMargin" constant="-20" id="wcT-rB-bTT"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FHA-Aj-WGz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Trang" id="Dn8-oD-2d8"/>
                     <connections>
@@ -288,11 +292,12 @@
                         <outlet property="btnEncreaseFontSize" destination="ygY-Zg-Lea" id="8NZ-x2-FAc"/>
                         <outlet property="btnNext" destination="72p-6e-peM" id="9NR-LN-guA"/>
                         <outlet property="btnPrev" destination="Nea-mQ-xam" id="qtd-Pv-GCu"/>
+                        <segue destination="3z4-a9-JZ4" kind="unwind" identifier="unwindFromReadBook" unwindAction="unwindFromReadBookWithSegue:" id="aLC-3t-4yh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6L-49-lMN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2478.2608695652175" y="-311.38392857142856"/>
+            <point key="canvasLocation" x="2632" y="-310"/>
         </scene>
         <!--Danh mục-->
         <scene sceneID="Aud-LX-Duo">
@@ -307,10 +312,10 @@
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ7-dU-ev8">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="886"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tableviewcell" id="JLV-Y4-twG" customClass="TableViewCell" customModule="Ios_Books" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="374" height="78.5"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="374" height="78.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JLV-Y4-twG" id="zYj-Cm-u93">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="78.5"/>
@@ -354,14 +359,14 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QTQ-3s-UOW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="O4K-Uy-6bq" firstAttribute="top" secondItem="4qa-uN-YAs" secondAttribute="top" constant="10" id="1Mt-4a-dBv"/>
                             <constraint firstAttribute="bottom" secondItem="O4K-Uy-6bq" secondAttribute="bottom" id="mNE-SK-bpC"/>
                             <constraint firstAttribute="trailing" secondItem="O4K-Uy-6bq" secondAttribute="trailing" constant="20" id="urE-Qk-5Tm"/>
                             <constraint firstItem="O4K-Uy-6bq" firstAttribute="leading" secondItem="4qa-uN-YAs" secondAttribute="leading" constant="20" id="vOi-iu-qO0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="QTQ-3s-UOW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Danh mục" id="Efr-lP-paS"/>
                     <connections>
@@ -371,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkn-TA-edy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="915.94202898550736" y="527.67857142857144"/>
+            <point key="canvasLocation" x="770" y="528"/>
         </scene>
         <!--Danh mục-->
         <scene sceneID="Pet-nQ-a5c">
@@ -383,7 +388,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bbP-wU-Gbb">
                                 <rect key="frame" x="20" y="0.0" width="374" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NvS-Gh-rgU">
                                     <size key="itemSize" width="128" height="202"/>
@@ -413,6 +418,7 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <viewLayoutGuide key="safeArea" id="AAD-cS-UaL"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Caa-4q-I2i" secondAttribute="trailing" id="6CT-2h-Mae"/>
@@ -422,7 +428,6 @@
                                             <constraint firstItem="b3Z-7W-rbf" firstAttribute="top" secondItem="Caa-4q-I2i" secondAttribute="bottom" constant="5" id="seB-CM-ypR"/>
                                             <constraint firstItem="Caa-4q-I2i" firstAttribute="leading" secondItem="0qr-T4-uqy" secondAttribute="leading" id="tHg-gx-wH8"/>
                                         </constraints>
-                                        <viewLayoutGuide key="safeArea" id="AAD-cS-UaL"/>
                                         <size key="customSize" width="128" height="202"/>
                                         <connections>
                                             <outlet property="bookImage" destination="Caa-4q-I2i" id="pmh-LQ-7SP"/>
@@ -432,14 +437,14 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="MdM-pB-ylW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bbP-wU-Gbb" firstAttribute="leading" secondItem="RK0-U3-eXb" secondAttribute="leading" constant="20" id="U7L-pU-8Nv"/>
                             <constraint firstItem="bbP-wU-Gbb" firstAttribute="top" secondItem="RK0-U3-eXb" secondAttribute="top" id="aYr-J7-cKB"/>
                             <constraint firstAttribute="trailing" secondItem="bbP-wU-Gbb" secondAttribute="trailing" constant="20" id="jIs-UQ-0Bf"/>
                             <constraint firstAttribute="bottom" secondItem="bbP-wU-Gbb" secondAttribute="bottom" id="qTr-E2-3vg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MdM-pB-ylW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Danh mục" id="tbn-2q-DI2"/>
                     <connections>
@@ -449,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljB-UE-MDL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986.9565217391305" y="527.67857142857144"/>
+            <point key="canvasLocation" x="1706" y="528"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZKR-Xd-0Rk">
@@ -489,16 +494,16 @@
             </objects>
             <point key="canvasLocation" x="-114.49275362318842" y="-310.04464285714283"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Đăng ký-->
         <scene sceneID="WEq-0n-JzJ">
             <objects>
-                <viewController id="myH-Wo-jdd" customClass="RegisterViewController" customModule="Ios_Books" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="myH-Wo-jdd" customClass="RegisterViewController" customModule="Ios_Books" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VCC-41-dSM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="7As-cu-gZU">
-                                <rect key="frame" x="20" y="88" width="374" height="314.5"/>
+                                <rect key="frame" x="20" y="128" width="374" height="314.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xsW-lW-gdZ">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="230.5"/>
@@ -531,7 +536,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X39-iY-5EV">
                                                         <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -547,7 +552,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập nhập lại mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OOM-UP-SEA">
                                                         <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -561,7 +566,7 @@
                                             <constraint firstAttribute="trailing" secondItem="xfS-to-7ao" secondAttribute="trailing" id="sRo-O1-VjY"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pC-8z-Es6">
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pC-8z-Es6">
                                         <rect key="frame" x="0.0" y="270.5" width="374" height="44"/>
                                         <color key="backgroundColor" red="0.348175972" green="0.68478961660000004" blue="1" alpha="0.29189590669999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -569,6 +574,7 @@
                                         </constraints>
                                         <state key="normal" title="Đăng ký"/>
                                         <connections>
+                                            <action selector="btnRegisterTap:" destination="myH-Wo-jdd" eventType="touchUpInside" id="x5t-eg-nNC"/>
                                             <action selector="readBookTap:" destination="cPo-8O-7FT" eventType="touchUpInside" id="5m1-nK-02I"/>
                                         </connections>
                                     </button>
@@ -581,15 +587,15 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2L8-vV-9Hf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="7As-cu-gZU" firstAttribute="top" secondItem="2L8-vV-9Hf" secondAttribute="top" constant="40" id="1d6-eo-SPG"/>
                             <constraint firstItem="2L8-vV-9Hf" firstAttribute="trailing" secondItem="7As-cu-gZU" secondAttribute="trailing" constant="20" id="Yje-o4-nKX"/>
-                            <constraint firstItem="7As-cu-gZU" firstAttribute="top" secondItem="2L8-vV-9Hf" secondAttribute="top" id="mo9-vi-lHc"/>
                             <constraint firstItem="7As-cu-gZU" firstAttribute="leading" secondItem="2L8-vV-9Hf" secondAttribute="leading" constant="20" id="wIG-aZ-TfL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2L8-vV-9Hf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vfl-oi-Wir"/>
+                    <navigationItem key="navigationItem" title="Đăng ký" largeTitleDisplayMode="always" id="Vfl-oi-Wir"/>
                     <connections>
                         <outlet property="btnRegister" destination="3pC-8z-Es6" id="z21-vA-DPi"/>
                         <outlet property="textEmail" destination="cym-mo-rc7" id="tQe-nq-cvW"/>
@@ -599,7 +605,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZV-pn-yyR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3153.6231884057975" y="1682.1428571428571"/>
+            <point key="canvasLocation" x="3925" y="1299"/>
         </scene>
         <!--Danh mục-->
         <scene sceneID="anG-uf-KB4">
@@ -618,7 +624,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W18-0p-vYY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.7971014492753632" y="527.67857142857144"/>
+            <point key="canvasLocation" x="-114" y="528"/>
         </scene>
         <!--Sách đang đọc-->
         <scene sceneID="WkS-SV-sYm">
@@ -629,7 +635,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GCS-ps-qEb">
-                                <rect key="frame" x="20" y="98" width="374" height="292"/>
+                                <rect key="frame" x="20" y="98" width="374" height="412"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pDg-GE-gsg">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="230"/>
@@ -677,7 +683,7 @@
                                             <constraint firstItem="tjy-2y-52M" firstAttribute="top" secondItem="pDg-GE-gsg" secondAttribute="top" id="B6I-b2-Fxt"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpC-6g-uwV">
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpC-6g-uwV">
                                         <rect key="frame" x="0.0" y="250" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.348175972" green="0.68478961660000004" blue="1" alpha="0.29189590669999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -685,25 +691,37 @@
                                         </constraints>
                                         <state key="normal" title="Đọc tiếp"/>
                                         <connections>
-                                            <action selector="readBookTap:" destination="cPo-8O-7FT" eventType="touchUpInside" id="YTD-pE-Ppb"/>
+                                            <segue destination="5rw-bu-VTx" kind="show" id="Pvm-Lb-p5a"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn chưa có lịch sử đọc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAz-50-f9B">
+                                        <rect key="frame" x="0.0" y="312" width="374" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="VIC-N2-o0S"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wAz-50-f9B" secondAttribute="trailing" id="AvY-E1-Oep"/>
                                     <constraint firstItem="pDg-GE-gsg" firstAttribute="leading" secondItem="GCS-ps-qEb" secondAttribute="leading" id="PRv-El-D1p"/>
+                                    <constraint firstAttribute="bottom" secondItem="wAz-50-f9B" secondAttribute="bottom" id="QQX-4u-Gi1"/>
+                                    <constraint firstItem="wAz-50-f9B" firstAttribute="leading" secondItem="GCS-ps-qEb" secondAttribute="leading" id="bsE-Ne-ejW"/>
                                     <constraint firstAttribute="trailing" secondItem="pDg-GE-gsg" secondAttribute="trailing" id="eaj-vN-FVh"/>
                                     <constraint firstItem="RpC-6g-uwV" firstAttribute="leading" secondItem="GCS-ps-qEb" secondAttribute="leading" id="fSB-ZW-0UH"/>
                                     <constraint firstAttribute="trailing" secondItem="RpC-6g-uwV" secondAttribute="trailing" id="je7-y3-cAC"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4ab-lf-Awo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GCS-ps-qEb" firstAttribute="leading" secondItem="4ab-lf-Awo" secondAttribute="leading" constant="20" id="7qh-ec-j74"/>
                             <constraint firstItem="GCS-ps-qEb" firstAttribute="top" secondItem="4ab-lf-Awo" secondAttribute="top" constant="10" id="if8-jh-2ZI"/>
                             <constraint firstItem="4ab-lf-Awo" firstAttribute="trailing" secondItem="GCS-ps-qEb" secondAttribute="trailing" constant="20" id="jvn-mG-1Nb"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4ab-lf-Awo"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sách đang đọc" id="UlW-J9-h6I"/>
                     <connections>
@@ -711,11 +729,15 @@
                         <outlet property="bookName" destination="Bcd-5D-kPn" id="Fbv-q3-EDu"/>
                         <outlet property="bookPage" destination="OAB-q6-fuJ" id="E9d-XB-EoW"/>
                         <outlet property="btnReadBookContinue" destination="RpC-6g-uwV" id="XcW-Xo-k8c"/>
+                        <outlet property="noHistoryLabel" destination="wAz-50-f9B" id="Mcr-xo-KDp"/>
+                        <outlet property="stackView" destination="pDg-GE-gsg" id="ylY-xd-QUT"/>
+                        <segue destination="RaB-g9-W6g" kind="show" identifier="historyToLogin" id="7OQ-tH-PY1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4W-ga-BaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3z4-a9-JZ4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="915.94202898550736" y="1282.3660714285713"/>
+            <point key="canvasLocation" x="1680" y="1300"/>
         </scene>
         <!--Tủ sách-->
         <scene sceneID="aCT-5a-IQA">
@@ -734,28 +756,121 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyT-V0-gQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.7971014492753632" y="1282.3660714285713"/>
+            <point key="canvasLocation" x="-114" y="1300"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="nWW-wZ-eIe">
+        <!--Đăng nhập-->
+        <scene sceneID="tpO-0j-TYf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u9c-ca-pJL" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vPw-lW-8gJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController hidesBottomBarWhenPushed="YES" id="RaB-g9-W6g" customClass="LoginViewController" customModule="Ios_Books" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q9W-0Y-Ijg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ZgG-tn-euA">
+                                <rect key="frame" x="20" y="128" width="374" height="339"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0PM-lQ-u8z">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="147"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="tF0-Cp-5bt">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="63.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbr-Vw-7Pd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4UB-qp-1bz">
+                                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="U5b-m0-fXr">
+                                                <rect key="frame" x="0.0" y="83.5" width="374" height="63.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mật khẩu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPc-27-nXx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ha5-Xn-aIe">
+                                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="tF0-Cp-5bt" firstAttribute="leading" secondItem="0PM-lQ-u8z" secondAttribute="leading" id="Xpd-Yq-Uaf"/>
+                                            <constraint firstItem="U5b-m0-fXr" firstAttribute="leading" secondItem="0PM-lQ-u8z" secondAttribute="leading" id="iI9-jp-cX7"/>
+                                            <constraint firstAttribute="trailing" secondItem="tF0-Cp-5bt" secondAttribute="trailing" id="jv8-k2-A9P"/>
+                                            <constraint firstAttribute="trailing" secondItem="U5b-m0-fXr" secondAttribute="trailing" id="rT9-vx-IEA"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="40" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cla-pe-mhf">
+                                        <rect key="frame" x="0.0" y="187" width="374" height="44"/>
+                                        <color key="backgroundColor" red="0.348175972" green="0.68478961660000004" blue="1" alpha="0.29189590669999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="e0g-RG-isK"/>
+                                        </constraints>
+                                        <state key="normal" title="Đăng nhập"/>
+                                        <connections>
+                                            <action selector="loginTap:" destination="RaB-g9-W6g" eventType="touchUpInside" id="saE-X4-ZjL"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b7k-e8-bhD">
+                                        <rect key="frame" x="75.5" y="271" width="223" height="68"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uws-2L-qqJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="223" height="30"/>
+                                                <state key="normal" title="Chưa có tài khoản, đăng ký ngay"/>
+                                                <connections>
+                                                    <segue destination="myH-Wo-jdd" kind="show" id="p0J-vs-O34"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0v-vz-HRX">
+                                                <rect key="frame" x="0.0" y="38" width="223" height="30"/>
+                                                <state key="normal" title="Quên mật khẩu"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Cla-pe-mhf" firstAttribute="leading" secondItem="ZgG-tn-euA" secondAttribute="leading" id="Mnk-an-llN"/>
+                                    <constraint firstItem="0PM-lQ-u8z" firstAttribute="leading" secondItem="ZgG-tn-euA" secondAttribute="leading" id="Njt-f6-WIF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cla-pe-mhf" secondAttribute="trailing" id="Uhw-dy-nXr"/>
+                                    <constraint firstAttribute="trailing" secondItem="0PM-lQ-u8z" secondAttribute="trailing" id="suW-Oh-u6y"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cIW-BQ-5nZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZgG-tn-euA" firstAttribute="top" secondItem="cIW-BQ-5nZ" secondAttribute="top" constant="40" id="gRh-1u-Vp5"/>
+                            <constraint firstItem="ZgG-tn-euA" firstAttribute="leading" secondItem="cIW-BQ-5nZ" secondAttribute="leading" constant="20" id="wdS-Si-dhR"/>
+                            <constraint firstItem="cIW-BQ-5nZ" firstAttribute="trailing" secondItem="ZgG-tn-euA" secondAttribute="trailing" constant="20" id="xEh-A0-W42"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Đăng nhập" id="mHS-0a-fbZ"/>
                     <connections>
-                        <segue destination="myH-Wo-jdd" kind="relationship" relationship="rootViewController" id="iN3-ej-e9I"/>
+                        <outlet property="btnLogin" destination="Cla-pe-mhf" id="o39-8W-rPt"/>
+                        <outlet property="textEmail" destination="4UB-qp-1bz" id="icV-NT-MDg"/>
+                        <outlet property="textPass" destination="ha5-Xn-aIe" id="NrZ-Nd-E9q"/>
+                        <segue destination="3z4-a9-JZ4" kind="unwind" identifier="unwindLoginToHistory" unwindAction="unwindFromLoginWithSegue:" id="WA8-zt-YQQ"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pvh-X7-oRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P5o-d4-q2C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2100" y="1682"/>
+            <point key="canvasLocation" x="2791" y="1300"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Pvm-Lb-p5a"/>
         <segue reference="xZP-WD-GZM"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -767,5 +882,11 @@
         <image name="goforward.plus" catalog="system" width="121" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

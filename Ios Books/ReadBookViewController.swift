@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestore
 
 class ReadBookViewController: UIViewController {
     
@@ -19,6 +17,7 @@ class ReadBookViewController: UIViewController {
     @IBOutlet weak var btnDecreaseFontSize: UIBarButtonItem!
     @IBOutlet weak var btnEncreaseFontSize: UIBarButtonItem!
     
+    let firebaseAuthService = FirebaseAuthService()
     var book: Book!
     var fontSize: CGFloat = 17
     var page: Int = 1
@@ -26,6 +25,7 @@ class ReadBookViewController: UIViewController {
     let firebaseService = FireBaseServices()
     var dataPageContent: [Int: String] = [:]
     var isCallApi: Bool = false
+    var fromHistory: Bool = false
     enum StatusPage {
         case next
         case prev
@@ -35,6 +35,11 @@ class ReadBookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // goi ham kiem tra dang nhap
+        firebaseAuthService.checkLogin( onCompletion: { status in
+            // xu ly neu can
+        })
         
         // Do any additional setup after loading the view.
         // showAlert()
@@ -59,10 +64,24 @@ class ReadBookViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.firebaseAuthService.removeStateListenerAuth()
+        
+        if self.fromHistory {
+            if isMovingFromParent {
+            //  print("da vo day")
+                performSegue(withIdentifier: "unwindFromReadBook", sender: self)
+            }
+        }
+    }
     
     // Dat trang tren tieu de
     func setPageTitle() {
-        self.navigationItem.title = "Trang \(page)"
+        self.navigationItem.title = "Trang \(self.page)"
+        // set lich su doc
+        self.saveHistory(page: self.page)
     }
     
     // Tat bat nut next trang
@@ -215,15 +234,10 @@ class ReadBookViewController: UIViewController {
         checkBtnFontSize()
     }
     
-    // init alert
-    func initAlert() {
-        
-    }
-    
     // Tao pupop hien thi khi sach khong co noi dung
     func showAlert() {
         
-        //        print("da vo day")
+        // print("da vo day")
         
         if let presentedViewController = self.presentedViewController {
             presentedViewController.dismiss(animated: true, completion: nil)
@@ -240,10 +254,24 @@ class ReadBookViewController: UIViewController {
         
         alert.addAction(okButton)
         DispatchQueue.main.async {
-            //            print("da goi")
+            // print("da goi")
             self.present(alert, animated: true)
         }
-        //        self.present(alert, animated: true)
+        // self.present(alert, animated: true)
+    }
+    
+    // luu lai lich su sach dang doc
+    func saveHistory(page: Int) {
+        let uid = firebaseAuthService.getUserUid()
+        
+        if !uid.isEmpty {
+//            print("user dang doc hien tai: \(uid)")
+            // check da co ton tai user trong db hay chua
+            firebaseService.updateHistory(userUid: uid, bookId: self.book.getBookId(), page: page)
+        }
+//        else {
+//            print("khong co user hien tai")
+//        }
     }
     
     /*

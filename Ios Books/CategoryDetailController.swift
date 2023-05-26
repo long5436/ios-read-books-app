@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseCore
 import FirebaseFirestore
 
 class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -21,10 +21,10 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
     let service = FireBaseServices()
     var category: Category!
     let bookCellReuseIdentifier: String = "BookCell"
-    private let categoryBook = Firestore.firestore().collection("books")
     var cellMarginSize: Float = 5.0
     var bookSelected: Book!
     let segueAboutViewIdentifier: String = "bookDetail"
+    var sizeCell: CGSize?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,9 +112,16 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
                 //                  print("vi daty")
                 service.getBooksFromCategory(cateId: self.category.getCategoryId(), documentLast: last) { (books: [Book], documentLast: DocumentSnapshot!) in
                     
-                    self.data = self.data + books
+                    // self.data = self.data + books
+                    // self.collection.reloadData()
                     
-                    self.collection.reloadData()
+                    for book in books {
+                        self.data.append(book)
+                        let indexPath = IndexPath(item: self.data.count - 1, section: 0)
+                        self.collection.insertItems(at: [indexPath])
+                    }
+                    
+                    
                     self.documentLast = documentLast
                     self.isCallApi = false
                 }
@@ -128,9 +135,13 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
                         self.showAlert()
                     }
                     else{
-                        self.data = books
-                        
-                        self.collection.reloadData()
+                        // self.data = book
+                        // self.collection.reloadData()
+                        for book in books {
+                            self.data.append(book)
+                            let indexPath = IndexPath(item: self.data.count - 1, section: 0)
+                            self.collection.insertItems(at: [indexPath])
+                        }
                         self.documentLast = documentLast
                         self.isCallApi = false
                     }
@@ -143,7 +154,7 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
     // Thay doi noi dung nut back o man hinh tiep theo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
-        backItem.title = "Trở về"
+        backItem.title = self.category.getName()
         navigationItem.backBarButtonItem = backItem
         
         // Lay Destination
@@ -154,12 +165,20 @@ class CategoryDetailController: UIViewController, UICollectionViewDelegate, UICo
 }
 
 extension CategoryDetailController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let numberOfItemsPerRow: CGFloat = 3
-        let itemWidth = (collectionView.frame.width / numberOfItemsPerRow) - 8.0
-        
-        return CGSize(width: itemWidth, height: (itemWidth * 2) + 2 - (itemWidth / 3))
+        if let zCell = self.sizeCell {
+            return zCell
+        }
+        else {
+            let numberOfItemsPerRow: CGFloat = 3
+            let itemWidth = (collectionView.frame.width / numberOfItemsPerRow) - 8.0
+            let zCell = CGSize(width: itemWidth, height: (itemWidth * 2) + 2 - (itemWidth / 3))
+            self.sizeCell = zCell
+            
+            return zCell
+        }
     }
 }
 

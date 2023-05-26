@@ -7,21 +7,13 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseCore
 import FirebaseFirestore
 
 class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     //MARK: Properties
     @IBOutlet weak var bookCollectionView: UICollectionView!
-    //    @IBOutlet weak var searchbar: UISearchBar!
-    
-    // du lieu gia
-    //    let arrayData: [String] = ["sdd", "DSDSD", "sdd", "DSDSD", "sdd", "DSDSD", "sdd", "DSDSD"]
-    //
-    //    let arrayData: [String] = ["DSDSD"]
-    
-    var limitBookQuery: Int = 12
     var arrBook = [Book]()
     var arrBookBackup = [Book]()
     var cellMarginSize: Float = 5.0
@@ -35,6 +27,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     let firebaseService = FireBaseServices()
     let searchbarController = UISearchController(searchResultsController: nil)
     var timer: Timer?
+    var sizeCell: CGSize?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +36,9 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         // Thiết lập data source cho UICollectionView
         bookCollectionView.delegate = self
         bookCollectionView.dataSource = self
-        //        searchbar.delegate = self
         
-        //        let nib =  UINib(nibName: "BookCollectionViewCell", bundle: nil)
-        //        bookCollectionView.register(nib, forCellWithReuseIdentifier: "BookCell")
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         
         // lam title chu bu
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -55,20 +47,21 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         setupSearchBar()
         
         // Dang ky layout grid view
-        self.setGridView()
+        setGridView()
         
         // Load du lieu sach
         getBooks()
+        
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        self.setGridView()
-        DispatchQueue.main.async {
-            self.bookCollectionView.reloadData()
-        }
-    }
+    //    override func viewDidLayoutSubviews() {
+    //        super.viewDidLayoutSubviews()
+    //
+    //        self.setGridView()
+    //        DispatchQueue.main.async {
+    //            self.bookCollectionView.reloadData()
+    //        }
+    //    }
     
     
     func setGridView() {
@@ -85,7 +78,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: bookCellReuseIdentifier, for: indexPath) as! BookCollectionViewCell
         cell.setData(book: arrBook[indexPath.row])
         
-        //        print("M book la: \(self.arrBook.count)")
         return cell
     }
     
@@ -130,7 +122,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
                 self.searchBooks(value: value)
             }
             
-//            print("value la: \(value)")
+            // print("value la: \(value)")
         })
     }
     
@@ -143,10 +135,10 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     //MARK: Hien thuc ham uy quyen cho searchbar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        print("tapped")
+        // print("tapped")
         
         // an ban phim
-        //                searchbar.resignFirstResponder()
+        // searchbar.resignFirstResponder()
         
         if let value = searchbarController.searchBar.text {
             //            print("value: \(value)")
@@ -186,10 +178,16 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             // tat trang thai dang tim kiem
             self.searching = false
             // lay lai mang sach ban dau
-            self.arrBook = Array(self.arrBookBackup)
+            // self.arrBook = Array(self.arrBookBackup)
             // load lai du lieu collection
+            // self.bookCollectionView.reloadData()
+            self.arrBook.removeAll()
             self.bookCollectionView.reloadData()
-            
+            for book in self.arrBookBackup {
+                self.arrBook.append(book)
+                let indexPath = IndexPath(item: self.arrBook.count - 1, section: 0)
+                self.bookCollectionView.insertItems(at: [indexPath])
+            }
         }
     }
     
@@ -201,8 +199,15 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         }
         
         self.firebaseService.searchBooks(searchText: value) { (data: [Book], documentLast :DocumentSnapshot?) in
-            self.arrBook = Array(data)
+//            self.arrBook = Array(data)
+//            self.bookCollectionView.reloadData()
+            self.arrBook.removeAll()
             self.bookCollectionView.reloadData()
+            for book in data {
+                self.arrBook.append(book)
+                let indexPath = IndexPath(item: self.arrBook.count - 1, section: 0)
+                self.bookCollectionView.insertItems(at: [indexPath])
+            }
         }
     }
     
@@ -219,13 +224,14 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
                 self.documentLast = currentDocumentLast
             }
             // them du lieu vao mang sach
-            if last != nil {
-                self.arrBook = self.arrBook + data
-            } else {
-                self.arrBook = data
+            for book in data {
+                self.arrBook.append(book)
+                let indexPath = IndexPath(item: self.arrBook.count - 1, section: 0)
+                self.bookCollectionView.insertItems(at: [indexPath])
             }
+            
             // load lai view khi co du lieu
-            self.bookCollectionView.reloadData()
+            //self.bookCollectionView.reloadData()
             // dat lai trang thai goi api
             self.isCallApi = false
         }
@@ -267,7 +273,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
             }
             
             // an ban phim
-            //            searchbar.resignFirstResponder()
+            // searchbar.resignFirstResponder()
             
         }
     }
@@ -275,9 +281,9 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     // Thay doi noi dung nut back o man hinh tiep theo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Trở về"
-        navigationItem.backBarButtonItem = backItem
+//        let backItem = UIBarButtonItem()
+//        backItem.title = "Trở về"
+//        navigationItem.backBarButtonItem = backItem
         
         // Lay Destination
         if let destination = segue.destination as? AboutViewController {
@@ -287,13 +293,19 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
 }
 
 extension HomeController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let numberOfItemsPerRow: CGFloat = 3
-        let itemWidth = (collectionView.frame.width / numberOfItemsPerRow) - 8.0
-        
-        //        print("Kich thuoc la:\(bookCollectionView.frame.width) : \(numberOfItemsPerRow) : \(collectionView.frame.width): \(itemWidth)")
-        
-        return CGSize(width: itemWidth, height: (itemWidth * 2) + 2 - (itemWidth / 3))
+        if let zCell = self.sizeCell {
+            return zCell
+        }
+        else {
+            let numberOfItemsPerRow: CGFloat = 3
+            let itemWidth = (collectionView.frame.width / numberOfItemsPerRow) - 8.0
+            let zCell = CGSize(width: itemWidth, height: (itemWidth * 2) + 2 - (itemWidth / 3))
+            self.sizeCell = zCell
+            
+            return zCell
+        }
     }
 }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestore
 
 class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate
 {
@@ -132,7 +130,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
 //        print("Chuyen man hinh")
         
         let backItem = UIBarButtonItem()
-        backItem.title = "Trở về"
+        backItem.title = "Danh mục"
         navigationItem.backBarButtonItem = backItem
         
         

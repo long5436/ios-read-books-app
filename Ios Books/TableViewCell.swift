@@ -33,7 +33,8 @@ class TableViewCell: UITableViewCell {
         }
         
         if let image = imgCategory {
-            image.getImageFromCach(imageName: category.getPhoto(), uiImage: image)
+            image.loadImage(pathName: category.getPhoto())
+            //(imageName: category.getPhoto())
             
         }
     }

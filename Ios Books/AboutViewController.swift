@@ -29,8 +29,9 @@ class AboutViewController: UIViewController {
         
         // load du lieu sach len man hinh
         if let book = book {
-            //            print("ten sach la: \(book.getName())")
-            bookImage.getImageFromCach(imageName: book.getPhoto(), uiImage: bookImage)
+            // print("ten sach la: \(book.getName())")
+            // bookImage.getImageFromCache(imageName: book.getPhoto())
+            bookImage.loadImage(pathName: book.getPhoto())
             bookLabel.text = book.getName()
             bookAbout.text = book.getAbout()
         }
@@ -47,10 +48,10 @@ class AboutViewController: UIViewController {
     
     // Thay doi noi dung nut back o man hinh tiep theo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Trở về"
-        navigationItem.backBarButtonItem = backItem
-        
+//        let backItem = UIBarButtonItem()
+//        backItem.title = "Trở về"
+//        navigationItem.backBarButtonItem = backItem
+//        
         // Lay Destination
         if let destination = segue.destination as? ReadBookViewController {
             destination.book = book
