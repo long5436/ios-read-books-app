@@ -34,12 +34,29 @@ class RegisterViewController: UIViewController {
         if !email.isEmpty && !pass.isEmpty && pass.isEqual(rePass) {
             print("Dang ky")
             firebaseAuthService.register(email: email, password: pass) { (status) in
-                
+                if status {
+                    self.showAlert(success: true)
+                }
             }
         }
         else {
             print("Nhap chua chinh xac")
+            self.showAlert()
         }
+    }
+    
+    // Tao pupop hien thi khi sach khong co noi dung
+    func showAlert(success: Bool = false) {
+        let message = success ? "Đăng ký thành công, nhấn \"OK\" để quay về màn hình đăng nhập" : "Nhập chưa chính xác, vui lòng kiểm tra lại"
+        let alert = UIAlertController(title: "Thông báo", message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
+            alert.dismiss(animated: true, completion: nil)
+            if success {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        alert.addAction(okButton)
+        self.present(alert, animated: true)
     }
     /*
     // MARK: - Navigation

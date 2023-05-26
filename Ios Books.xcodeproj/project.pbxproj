@@ -48,6 +48,7 @@
 		FD67F5EF2A101F3700ACBCE6 /* ReadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */; };
 		FD6B99FE2A082BD1005C5B7E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B99FD2A082BD1005C5B7E /* Book.swift */; };
 		FD6FCD552A1AAC750088B8D8 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FCD542A1AAC750088B8D8 /* FirebaseAuthService.swift */; };
+		FD8247842A1FFA4C00E646A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8247832A1FFA4C00E646A7 /* LoginViewController.swift */; };
 		FDA1ECE729FDB42200B9A9FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */; };
 		FDA2A7EC2A09830100701F4F /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */; };
 		FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */; };
@@ -130,6 +131,7 @@
 		FD67F5EE2A101F3700ACBCE6 /* ReadBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookViewController.swift; sourceTree = "<group>"; };
 		FD6B99FD2A082BD1005C5B7E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		FD6FCD542A1AAC750088B8D8 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		FD8247832A1FFA4C00E646A7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FDA1ECE629FDB42200B9A9FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FDA2A7EA2A09830100701F4F /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDB884ED2A0EBB1100F0A773 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				FD3106392A17D97000367736 /* RegisterViewController.swift */,
+				FD8247832A1FFA4C00E646A7 /* LoginViewController.swift */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -411,7 +414,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = Long;
 				TargetAttributes = {
 					FD36703929FAD6CE002E5AED = {
@@ -489,6 +492,7 @@
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
 				1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */,
 				FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */,
+				FD8247842A1FFA4C00E646A7 /* LoginViewController.swift in Sources */,
 				FD30D4B62A17774C000BF6C7 /* (null) in Sources */,
 				FD36704829FAD6CF002E5AED /* Ios_Books.xcdatamodeld in Sources */,
 				FDB884EE2A0EBB1100F0A773 /* AboutViewController.swift in Sources */,
@@ -580,6 +584,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -644,6 +649,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

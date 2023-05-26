@@ -61,8 +61,8 @@ class FireBaseServices {
                     let name = data["name"] as? String,
                     let photo = data["photo"] as? String,
                     let about = data["about"] as? String
-                    else {
-                        continue
+                else {
+                    continue
                 }
                 
                 let newBook = Book(bookId: document.documentID , categoryId: categoryId, name: name, photo: photo, about: about)
@@ -118,9 +118,9 @@ class FireBaseServices {
                 guard
                     let name = data["name"] as? String,
                     let photo = data["photo"] as? String
-                    
-                    else {
-                        continue
+                        
+                else {
+                    continue
                 }
                 
                 let newCategory = Category(
@@ -168,17 +168,34 @@ class FireBaseServices {
         }
     }
     
-    func getBook(userUid: String, bookId: String, onCompletion: @escaping (_ books: [Book], _ documentLast: DocumentSnapshot?) -> Void) -> Void {
+    func getBook(bookId: String, onCompletion: @escaping (_ book: Book) -> Void) -> Void {
         
-        let query = self.bookRef
-            .whereField("uid", isEqualTo: userUid)
-            .whereField("book_id", isEqualTo: bookId)
-            .limit(to: 1)
-        
-        self.getBookDataFromQuery(query: query, onCompletion: onCompletion)
+        self.bookRef.document(bookId).getDocument { (document, error) in
+            if let error = error {
+                print("Lỗi khi truy vấn dữ liệu: \(error.localizedDescription)")
+            } else {
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    
+                    let categoryId = data?["cate_id"] as? String ?? ""
+                    let name = data?["name"] as? String ?? ""
+                    let photo = data?["photo"] as? String ?? ""
+                    let about = data?["about"] as? String ?? ""
+                    
+                    
+                    let book = Book(bookId: document.documentID, categoryId: categoryId, name: name, photo: photo, about: about)
+                    
+                    if let book = book {
+                        onCompletion(book)
+                    }
+                    
+                }
+            }
+        }    
     }
     
-    func getHistory(userUid: String, onCompletion: @escaping (_ bookId: String, _ page: Int) -> Void) -> Void {
+    func getHistory(userUid: String, onCompletion: @escaping (_ bookId: String?, _ page: Int?) -> Void) -> Void {
         
         let query = self.historyRef
             .whereField("uid", isEqualTo: userUid)
@@ -190,6 +207,10 @@ class FireBaseServices {
                 return
             }
             
+            if snapshot.documents.count == 0 {
+                onCompletion(nil, nil)
+            }
+            
             // lay du lieu sach ra
             for document in snapshot.documents {
                 let data = document.data()
@@ -197,9 +218,9 @@ class FireBaseServices {
                 guard
                     let bookId = data["book_id"] as? String,
                     let page = data["page"] as? Int
-                    
-                    else {
-                        continue
+                        
+                else {
+                    continue
                 }
                 
                 onCompletion(bookId, Int(page))
@@ -207,27 +228,48 @@ class FireBaseServices {
         }
     }
     
-    func updateHistory(userUid: String) {
+    func updateHistory(userUid: String, bookId: String, page: Int) {
         
-        print("userUid \(userUid)")
+        let data: [String: Any] = [
+            "uid": userUid,
+            "book_id": bookId,
+            "page": page
+        ]
         
-        if !userUid.isEmpty {
-            
-            let data: [String: Any] = [
-                "uid": userUid,
-                "book_id": "UvkDKG5hgCYRzq6YYdq6",
-                "page": "3"
-            ]
-            
-            historyRef.addDocument(data: data) { (error) in
-                if let error = error {
-                    print("Lỗi khi thêm dữ liệu: \(error.localizedDescription)")
-                } else {
-                    print("Dữ liệu đã được thêm thành công vào collection 'histories'")
+        self.getHistory(userUid: userUid) { bookId, page in
+            if bookId == nil {
+                
+                self.historyRef.addDocument(data: data) { (error) in
+                    if let error = error {
+                        print("Lỗi khi thêm dữ liệu: \(error.localizedDescription)")
+                    } else {
+                        print("Dữ liệu đã được thêm thành công vào collection 'histories'")
+                    }
+                }
+                
+            }
+            else {
+                self.historyRef.whereField("uid", isEqualTo: userUid).getDocuments { (snapshot, error) in
+                    if let error = error {
+                        print("Lỗi khi truy vấn dữ liệu: \(error.localizedDescription)")
+                    } else {
+                        if let snapshot = snapshot, !snapshot.isEmpty {
+                            // Tìm thấy tài liệu, cập nhật trường "page"
+                            let document = snapshot.documents[0]
+                            document.reference.updateData(data) { (error) in
+                                if let error = error {
+                                    print("Lỗi khi cập nhật dữ liệu: \(error.localizedDescription)")
+                                } else {
+                                    print("Dữ liệu đã được cập nhật thành công trong collection 'histories'")
+                                }
+                            }
+                        } else {
+                            // Không tìm thấy tài liệu
+                            print("Không tìm thấy tài liệu có uid là \(userUid)")
+                        }
+                    }
                 }
             }
-            
         }
-        
     }
 }

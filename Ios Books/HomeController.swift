@@ -14,7 +14,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     //MARK: Properties
     @IBOutlet weak var bookCollectionView: UICollectionView!
-    var limitBookQuery: Int = 12
     var arrBook = [Book]()
     var arrBookBackup = [Book]()
     var cellMarginSize: Float = 5.0
@@ -26,7 +25,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     let segueAboutViewIdentifier: String = "HomeToAbout"
     var bookSelected: Book!
     let firebaseService = FireBaseServices()
-    let firebaseAuthService = FirebaseAuthService()
     let searchbarController = UISearchController(searchResultsController: nil)
     var timer: Timer?
     var sizeCell: CGSize?
@@ -53,11 +51,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
         // Load du lieu sach
         getBooks()
-        
-        // goi ham kiem tra dang nhap
-        firebaseAuthService.checkLogin { status in
-            // xu ly neu can
-        }
         
     }
     
@@ -288,9 +281,9 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     
     // Thay doi noi dung nut back o man hinh tiep theo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Trở về"
-        navigationItem.backBarButtonItem = backItem
+//        let backItem = UIBarButtonItem()
+//        backItem.title = "Trở về"
+//        navigationItem.backBarButtonItem = backItem
         
         // Lay Destination
         if let destination = segue.destination as? AboutViewController {
