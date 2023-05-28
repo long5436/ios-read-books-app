@@ -29,11 +29,11 @@ class HistoryViewController: UIViewController, UITabBarControllerDelegate {
         btnReadBookContinue.isHidden = true
         
         // test
-//        firebaseAuthService.logout { status in
-//            if status {
-//                
-//            }
-//        }
+        firebaseAuthService.logout { status in
+            if status {
+
+            }
+        }
         
         // kiem tra dang nhap
         firebaseAuthService.checkLogin { status in

@@ -10,6 +10,7 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 
+
 class ResetPassViewController: UIViewController {
     
     @IBOutlet weak var textFieldEmail: UITextField!
@@ -18,13 +19,15 @@ class ResetPassViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-          navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         //         Do any additional setup after loading the view.
         //                DispatchQueue.main.async {
         //                    self.showAlert(content: "Test")
         //                }
         
+        // test
+//        generateFakeVerificationCode()
         
     }
     
@@ -32,26 +35,39 @@ class ResetPassViewController: UIViewController {
         let auth = Auth.auth()
         let value = textFieldEmail.text ?? ""
         if !value.isEmpty {
-            self.showAlert(content: "Email")
+           
             auth.sendPasswordReset(withEmail: value) { (error) in
                 if let error = error {
-                    print("Error: \(error.localizedDescription)")
+                    print("Email: \(error.localizedDescription)")
+                     self.showAlert(content: "Email đã nhập không tồn tại hoặc chưa chính xác")
                 } else {
                     print("Password reset email sent successfully.")
-                     self.navigateToVerificationCodeScreen()
+                    self.navigateToVerificationCodeScreen()
+//                    self.generateFakeVerificationCode()
                 }
             }
         }
+        else {
+             self.showAlert(content: "Chưa nhập email")
+        }
+    }
+    
+    func generateFakeVerificationCode()->Int{
+
+        // lam fake vi khong co be ok
+        let verificationCode = Int(arc4random_uniform(900000)) + 100000
+        print("Mã xác nhận giả: \(verificationCode)")
+        return verificationCode
     }
     
     func navigateToVerificationCodeScreen() {
-         performSegue(withIdentifier: "verifyCodeScreen", sender: self)
+        performSegue(withIdentifier: "verifyCodeScreen", sender: self)
     }
     
     
     //hien thi thong bao neu load ko co du lieu
     func showAlert(content: String) {
-        let alert = UIAlertController(title: "Error", message: content, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Thông báo", message: content, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         
@@ -62,20 +78,17 @@ class ResetPassViewController: UIViewController {
     
     
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      
-     //        let backItem = UIBarButtonItem()
-     //        backItem.title = "Trở về"
-     //        navigationItem.backBarButtonItem = backItem
-     //
-     //        func sendPassReset(_ sender: UIButton) {
-     //            performSegue(withIdentifier: "SendCodeViewController", sender: self)
-     //        }
+     // Lay Destination
+        if let destination = segue.destination as? SendCodeViewController {
+            destination.code = self.generateFakeVerificationCode()
+        }
      
      }
-     */
+     
 }

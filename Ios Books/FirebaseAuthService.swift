@@ -86,4 +86,30 @@ class FirebaseAuthService {
             }
         }
     }
+    
+    func resetPass(password: String, onCompletion: @escaping (_ status: Bool)->Void) {
+        
+        let user = Auth.auth().currentUser
+        var credential: AuthCredential
+
+        // Prompt the user to re-provide their sign-in credentials
+
+        user?.reauthenticate(with: credential) { error in
+          if let error = error {
+            // An error happened.
+          } else {
+            // User re-authenticated.
+          }
+        }
+        
+        Auth.auth().currentUser?.updatePassword(to: password) { error in
+            if error != nil {
+                print("doi pass thanh cong")
+                onCompletion(true)
+            } else {
+                print("Doi pass that bai")
+                onCompletion(false)
+            }
+        }
+    }
 }

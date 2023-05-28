@@ -13,6 +13,8 @@ import  FirebaseCore
 class SendCodeViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
+    var code: Int?
+    
     
     
     override func viewDidLoad() {
@@ -23,32 +25,43 @@ class SendCodeViewController: UIViewController {
     }
     
     @IBAction func verifyCodeButtonTapped(_ sender: UIButton) {
-        let auth = Auth.auth()
+       
         
         let code = codeTextField.text ??  ""
         if !code.isEmpty {
-            self.showAlert(code: "Code")
-            auth.confirmPasswordReset(withCode: code, newPassword: "changePassWord") { error in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                } else {
-                    print("Mã code đã đdược xác nhận và cập nhật mật khẩu mới")
-                    self.navigateToChangePassScreen()
-                }
+            // code xu ly db ko viet trong controller
+//            auth.confirmPasswordReset(withCode: code, newPassword: "changePassWord") { error in
+//                if let error = error {
+//                    print("Error: \(error.localizedDescription)")
+//                } else {
+//                    print("Mã code đã đdược xác nhận và cập nhật mật khẩu mới")
+//                    self.navigateToChangePassScreen()
+//                }
+//            }
+            if (Int(code) == self.code) {
+                 print("code dung")
+                 self.navigateToChangePassScreen()
+            } else {
+                self.showAlert(code: "Code nhập vào không đúng")
             }
+        }
+        else {
+            self.showAlert(code: "Chưa nhập code")
         }
     }
     
     
+    
     //hien thi thong bao neu load ko co du lieu
     func showAlert(code: String) {
-        let alert = UIAlertController(title: "Lỗi ko có mã", message: code, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Thông báo", message: code, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         
         // Gọi phương thức present trên view controller chính để hiển thị cảnh báo
         print("Da lay ma")
         self.present(alert, animated: true, completion: nil)
+        self.navigateToChangePassScreen()
     }
     
     

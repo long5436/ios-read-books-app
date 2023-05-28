@@ -10,6 +10,7 @@
 		1C07185E2A0C7B5A00677845 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07185D2A0C7B5A00677845 /* Category.swift */; };
 		1C0718612A0C7D8200677845 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0718602A0C7D8200677845 /* TableViewCell.swift */; };
 		1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */; };
+		1C5A2AF42A21BB2200B39D59 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A2AF32A21BB2200B39D59 /* ChangePasswordViewController.swift */; };
 		1C7287EE2A0D162A0058745C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7287ED2A0D162A0058745C /* CategoryViewController.swift */; };
 		FD12C2162A10F55E001F69B3 /* mycustom-NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */; };
 		FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1967B82A0BA535009007A2 /* UIImageView.swift */; };
@@ -92,6 +93,7 @@
 		1C07185D2A0C7B5A00677845 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		1C0718602A0C7D8200677845 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		1C2D18252A1288A70041FAD2 /* CategoryDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailController.swift; sourceTree = "<group>"; };
+		1C5A2AF32A21BB2200B39D59 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		1C7287ED2A0D162A0058745C /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FD12C2132A10F014001F69B3 /* mycustom-NotoSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mycustom-NotoSerif-Regular.ttf"; sourceTree = "<group>"; };
 		FD1967B82A0BA535009007A2 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				FD649CEC2A2139BB0080AD8F /* SendCodeViewController.swift */,
 				FD3106392A17D97000367736 /* RegisterViewController.swift */,
 				FD8247832A1FFA4C00E646A7 /* LoginViewController.swift */,
+				1C5A2AF32A21BB2200B39D59 /* ChangePasswordViewController.swift */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				FD36703E29FAD6CF002E5AED /* AppDelegate.swift in Sources */,
 				1C2D18262A1288A70041FAD2 /* CategoryDetailController.swift in Sources */,
 				FD1967B92A0BA535009007A2 /* UIImageView.swift in Sources */,
+				1C5A2AF42A21BB2200B39D59 /* ChangePasswordViewController.swift in Sources */,
 				FD8247842A1FFA4C00E646A7 /* LoginViewController.swift in Sources */,
 				FD30D4B62A17774C000BF6C7 /* (null) in Sources */,
 				FD36704829FAD6CF002E5AED /* Ios_Books.xcdatamodeld in Sources */,
