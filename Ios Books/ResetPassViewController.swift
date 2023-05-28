@@ -14,7 +14,7 @@ import FirebaseAuth
 class ResetPassViewController: UIViewController {
     
     @IBOutlet weak var textFieldEmail: UITextField!
-    
+    @IBOutlet weak var btnSendMail: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,7 @@ class ResetPassViewController: UIViewController {
         
         // test
 //        generateFakeVerificationCode()
+        btnSendMail.layer.cornerRadius = 8
         
     }
     
@@ -42,8 +43,9 @@ class ResetPassViewController: UIViewController {
                      self.showAlert(content: "Email đã nhập không tồn tại hoặc chưa chính xác")
                 } else {
                     print("Password reset email sent successfully.")
-                    self.navigateToVerificationCodeScreen()
+//                    self.navigateToVerificationCodeScreen()
 //                    self.generateFakeVerificationCode()
+                    self.showAlert(content: "Kiểm tra email của bạn, một đường thay đổi mật khẩu sẽ được gửi đến email của bạn. Bấm OK để quay về trang đăng nhập", redirectToLogin: true)
                 }
             }
         }
@@ -66,14 +68,19 @@ class ResetPassViewController: UIViewController {
     
     
     //hien thi thong bao neu load ko co du lieu
-    func showAlert(content: String) {
+    func showAlert(content: String, redirectToLogin: Bool = false) {
         let alert = UIAlertController(title: "Thông báo", message: content, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
+            if redirectToLogin {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
         alert.addAction(okAction)
         
         // Gọi phương thức present trên view controller chính để hiển thị cảnh báo
         print("vao day roi")
         self.present(alert, animated: true, completion: nil)
+        
     }
     
     

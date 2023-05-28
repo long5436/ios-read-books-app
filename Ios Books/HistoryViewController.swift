@@ -29,11 +29,11 @@ class HistoryViewController: UIViewController, UITabBarControllerDelegate {
         btnReadBookContinue.isHidden = true
         
         // test
-        firebaseAuthService.logout { status in
-            if status {
-
-            }
-        }
+        //        firebaseAuthService.logout { status in
+        //            if status {
+        //
+        //            }
+        //        }
         
         // kiem tra dang nhap
         firebaseAuthService.checkLogin { status in
@@ -62,15 +62,30 @@ class HistoryViewController: UIViewController, UITabBarControllerDelegate {
         
         if tabBarController.selectedIndex == 2 {
             // kiem trang dang nhap
-            let uid = self.firebaseAuthService.getUserUid()
-            if !uid.isEmpty {
-                self.getBook(userUid: uid)
-            }
-            else {
-                self.stackView.isHidden = true
-                self.btnReadBookContinue.isHidden = true
-                self.noHistoryLabel.isHidden = false
-                self.showAlert()
+            //            let uid = self.firebaseAuthService.getUserUid()
+            //            if !uid.isEmpty {
+            //                self.getBook(userUid: uid)
+            //            }
+            //            else {
+            //                self.stackView.isHidden = true
+            //                self.btnReadBookContinue.isHidden = true
+            //                self.noHistoryLabel.isHidden = false
+            //                self.showAlert()
+            //            }
+            
+            // kiem tra dang nhap
+            firebaseAuthService.checkLogin { status in
+                
+                print(status)
+                if status {
+                    let uid = self.firebaseAuthService.getUserUid()
+                    self.getBook(userUid: uid)
+                } else {
+                    self.stackView.isHidden = true
+                    self.btnReadBookContinue.isHidden = true
+                    self.noHistoryLabel.isHidden = false
+                    self.showAlert()
+                }
             }
         }
     }

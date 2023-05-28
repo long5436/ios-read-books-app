@@ -18,6 +18,10 @@ class FirebaseAuthService {
         return self.userUid ?? ""
     }
     
+    func getUserEmail() -> String {
+        return self.userEmail ?? ""
+    }
+    
     func checkLogin(onCompletion:  @escaping (_ status: Bool)->Void) {
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
@@ -89,18 +93,7 @@ class FirebaseAuthService {
     
     func resetPass(password: String, onCompletion: @escaping (_ status: Bool)->Void) {
         
-        let user = Auth.auth().currentUser
-        var credential: AuthCredential
-
         // Prompt the user to re-provide their sign-in credentials
-
-        user?.reauthenticate(with: credential) { error in
-          if let error = error {
-            // An error happened.
-          } else {
-            // User re-authenticated.
-          }
-        }
         
         Auth.auth().currentUser?.updatePassword(to: password) { error in
             if error != nil {
