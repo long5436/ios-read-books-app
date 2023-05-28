@@ -8,10 +8,13 @@
 
 import UIKit
 
-class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate {
+class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate {
+    @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stackview: UIStackView!
     
     var button: UIButton!
+    let authService = FirebaseAuthService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,37 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         //
         tableView.delegate = self
         tableView.dataSource = self
+        tabBarController?.delegate = self
         
+        stackview.isHidden = true
+        
+        // kiem tra dang nhap
+        authService.checkLogin { status in
+            if status {
+                // lay du lieu
+                self.userEmail.text = self.authService.getUserEmail()
+                self.stackview.isHidden = false
+            }
+        }
+        
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        //print(tabBarController.selectedIndex)
+        
+        if tabBarController.selectedIndex == 2 {
+            // kiem trang dang nhap
+            authService.checkLogin { status in
+                if status {
+                    // lay du lieu
+                    self.userEmail.text = self.authService.getUserEmail()
+                    self.stackview.isHidden = false
+                } else {
+                    self.stackview.isHidden = true
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,8 +71,33 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 0) {
-            print("Dang xuat")
+            self.showAlert()
         }
+        
+    }
+    
+    // Tao pupop hien thi khi sach khong co noi dung
+    func showAlert() {
+        
+        let alert = UIAlertController(title: "Thông báo", message: "Bạn có muốn đăng xuất không?", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "Huỷ bỏ", style: .default) { (ok: UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        let okButton = UIAlertAction(title: "OK", style: .default) { (ok: UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+            
+            self.authService.logout { status in
+                self.stackview.isHidden = true
+            }
+        }
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        
+    
+        self.present(alert, animated: true)
+        
     }
     
     // MARK: - Navigation
