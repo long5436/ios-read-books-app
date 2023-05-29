@@ -38,14 +38,14 @@ class ResetPassViewController: UIViewController {
         if !value.isEmpty {
            
             auth.sendPasswordReset(withEmail: value) { (error) in
-                if let error = error {
-                    print("Email: \(error.localizedDescription)")
+                if let _ = error {
+                   // print("Email: \(error.localizedDescription)")
                      self.showAlert(content: "Email đã nhập không tồn tại hoặc chưa chính xác")
                 } else {
-                    print("Password reset email sent successfully.")
+                   // print("Password reset email sent successfully.")
 //                    self.navigateToVerificationCodeScreen()
 //                    self.generateFakeVerificationCode()
-                    self.showAlert(content: "Kiểm tra email của bạn, một đường thay đổi mật khẩu sẽ được gửi đến email của bạn. Bấm OK để quay về trang đăng nhập", redirectToLogin: true)
+                    self.showAlert(content: "Kiểm tra email của bạn, một liên kết thay đổi mật khẩu sẽ được gửi đến email của bạn. Bấm OK để quay về trang đăng nhập", redirectToLogin: true)
                 }
             }
         }
@@ -58,7 +58,7 @@ class ResetPassViewController: UIViewController {
 
         // lam fake vi khong co be ok
         let verificationCode = Int(arc4random_uniform(900000)) + 100000
-        print("Mã xác nhận giả: \(verificationCode)")
+        //print("Mã xác nhận giả: \(verificationCode)")
         return verificationCode
     }
     
@@ -78,7 +78,7 @@ class ResetPassViewController: UIViewController {
         alert.addAction(okAction)
         
         // Gọi phương thức present trên view controller chính để hiển thị cảnh báo
-        print("vao day roi")
+        //print("vao day roi")
         self.present(alert, animated: true, completion: nil)
         
     }

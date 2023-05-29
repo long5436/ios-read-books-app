@@ -23,6 +23,10 @@ class FirebaseAuthService {
     }
     
     func checkLogin(onCompletion:  @escaping (_ status: Bool)->Void) {
+        
+        // huy trang thai theo doi
+        self.removeStateListenerAuth()
+        
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 if let user = user {
@@ -34,14 +38,16 @@ class FirebaseAuthService {
                     self.userEmail = email
                     self.userUid = uid
                     
-                    print("uid: \(uid), email: \(email)")
+                    //print("uid: \(uid), email: \(email)")
                 }
                 
-                print("Da dang nhap")
+                //print("Da dang nhap")
                 onCompletion(true)
             }
             else {
-                print("Chua dang nhap")
+                //print("Chua dang nhap")
+                self.userEmail = ""
+                self.userUid = ""
                 onCompletion(false)
             }
         }
@@ -50,11 +56,11 @@ class FirebaseAuthService {
     func register(email: String, password: String, onCompletion: @escaping (_ status: Bool)->Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let _ = error {
-                print("Loi dang ky user")
+              //  print("Loi dang ky user")
                 onCompletion(false)
             }
             else {
-                print("Dang ky thanh cong")
+              //  print("Dang ky thanh cong")
                 // goi dang xuat sau khi dang nhap thanh cong vi chua biet cach ngan chan dang nhap tu dong sau khi dang ky
                 self.logout { status in }
                 onCompletion(true)
@@ -72,10 +78,11 @@ class FirebaseAuthService {
     func logout(onCompletion: @escaping (_ status: Bool)->Void) {
         do {
           try Auth.auth().signOut()
-            print("Da dang xuat")
+            //print("Da dang xuat")
+            self.userUid = ""
             onCompletion(true)
         } catch {
-            print("Dang xuat loi")
+            //print("Dang xuat loi")
             onCompletion(false)
         }
     }
@@ -97,10 +104,10 @@ class FirebaseAuthService {
         
         Auth.auth().currentUser?.updatePassword(to: password) { error in
             if error != nil {
-                print("doi pass thanh cong")
+                //print("doi pass thanh cong")
                 onCompletion(true)
             } else {
-                print("Doi pass that bai")
+               // print("Doi pass that bai")
                 onCompletion(false)
             }
         }

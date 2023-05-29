@@ -81,11 +81,11 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let alert = UIAlertController(title: "Thông báo", message: "Bạn có muốn đăng xuất không?", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Huỷ bỏ", style: .default) { (ok: UIAlertAction) in
-            alert.dismiss(animated: true, completion: nil)
+            //alert.dismiss(animated: true, completion: nil)
         }
         
         let okButton = UIAlertAction(title: "OK", style: .default) { (ok: UIAlertAction) in
-            alert.dismiss(animated: true, completion: nil)
+            //alert.dismiss(animated: true, completion: nil)
             
             self.authService.logout { status in
                 self.stackview.isHidden = true

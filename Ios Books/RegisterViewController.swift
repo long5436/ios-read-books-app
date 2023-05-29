@@ -37,7 +37,7 @@ class RegisterViewController: UIViewController {
         let rePass:String = textRePassword.text ?? ""
         
         if !email.isEmpty && !pass.isEmpty && pass.isEqual(rePass) {
-            print("Dang ky")
+            //print("Dang ky")
             firebaseAuthService.register(email: email, password: pass) { (status) in
                 if status {
                     self.showAlert(status: .success)
@@ -48,7 +48,7 @@ class RegisterViewController: UIViewController {
             }
         }
         else {
-            print("Nhap chua chinh xac")
+            //print("Nhap chua chinh xac")
             self.showAlert(status: .error)
         }
     }
