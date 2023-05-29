@@ -28,7 +28,7 @@ class FireBaseServices {
         
         query.getDocuments { (snapshot, error) in
             guard let snapshot = snapshot else {
-                print("Error fetching documents: \(error!)")
+               // print("Error fetching documents: \(error!)")
                 return
             }
             
@@ -46,7 +46,7 @@ class FireBaseServices {
     func getBookDataFromQuery(query: Query, onCompletion: @escaping (_ books: [Book], _ documentLast: DocumentSnapshot?) -> Void) {
         query.getDocuments{ (snapshot, error) in
             guard let snapshot = snapshot else {
-                print("Error fetching documents: \(error!)")
+               // print("Error fetching documents: \(error!)")
                 return}
             
             
@@ -104,7 +104,7 @@ class FireBaseServices {
         
         query.getDocuments { (snapshot, error) in
             guard let snapshot = snapshot else {
-                print("Error fetching documents: \(error!)")
+               // print("Error fetching documents: \(error!)")
                 return
             }
             // print("da lieu la \(String(describing: snapshot.documents.last?.data()["name"]))")
@@ -171,8 +171,8 @@ class FireBaseServices {
     func getBook(bookId: String, onCompletion: @escaping (_ book: Book) -> Void) -> Void {
         
         self.bookRef.document(bookId).getDocument { (document, error) in
-            if let error = error {
-                print("Lỗi khi truy vấn dữ liệu: \(error.localizedDescription)")
+            if let _ = error {
+               // print("Lỗi khi truy vấn dữ liệu: \(error.localizedDescription)")
             } else {
                 if let document = document, document.exists {
                     let data = document.data()
@@ -203,7 +203,7 @@ class FireBaseServices {
         
         query.getDocuments { (snapshot, error) in
             guard let snapshot = snapshot else {
-                print("Error fetching documents: \(error!)")
+               // print("Error fetching documents: \(error!)")
                 return
             }
             
@@ -240,32 +240,32 @@ class FireBaseServices {
             if bookId == nil {
                 
                 self.historyRef.addDocument(data: data) { (error) in
-                    if let error = error {
-                        print("Lỗi khi thêm dữ liệu: \(error.localizedDescription)")
+                    if let _ = error {
+                       // print("Lỗi khi thêm dữ liệu: \(error.localizedDescription)")
                     } else {
-                        print("Dữ liệu đã được thêm thành công vào collection 'histories'")
+                       // print("Dữ liệu đã được thêm thành công vào collection 'histories'")
                     }
                 }
                 
             }
             else {
                 self.historyRef.whereField("uid", isEqualTo: userUid).getDocuments { (snapshot, error) in
-                    if let error = error {
-                        print("Lỗi khi truy vấn dữ liệu: \(error.localizedDescription)")
+                    if let _ = error {
+                       // print("Lỗi khi truy vấn dữ liệu: \(error.localizedDescription)")
                     } else {
                         if let snapshot = snapshot, !snapshot.isEmpty {
                             // Tìm thấy tài liệu, cập nhật trường "page"
                             let document = snapshot.documents[0]
                             document.reference.updateData(data) { (error) in
-                                if let error = error {
-                                    print("Lỗi khi cập nhật dữ liệu: \(error.localizedDescription)")
+                                if let _ = error {
+                                   // print("Lỗi khi cập nhật dữ liệu: \(error.localizedDescription)")
                                 } else {
-                                    print("Dữ liệu đã được cập nhật thành công trong collection 'histories'")
+                                   // print("Dữ liệu đã được cập nhật thành công trong collection 'histories'")
                                 }
                             }
                         } else {
                             // Không tìm thấy tài liệu
-                            print("Không tìm thấy tài liệu có uid là \(userUid)")
+                            //print("Không tìm thấy tài liệu có uid là \(userUid)")
                         }
                     }
                 }

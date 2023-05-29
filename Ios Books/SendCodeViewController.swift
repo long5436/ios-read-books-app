@@ -39,7 +39,7 @@ class SendCodeViewController: UIViewController {
 //                }
 //            }
             if (Int(code) == self.code) {
-                 print("code dung")
+                 //print("code dung")
                  self.navigateToChangePassScreen()
             } else {
                 self.showAlert(code: "Code nhập vào không đúng")
@@ -59,7 +59,7 @@ class SendCodeViewController: UIViewController {
         alert.addAction(okAction)
         
         // Gọi phương thức present trên view controller chính để hiển thị cảnh báo
-        print("Da lay ma")
+        //print("Da lay ma")
         self.present(alert, animated: true, completion: nil)
         self.navigateToChangePassScreen()
     }

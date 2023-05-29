@@ -38,7 +38,7 @@ class ChangePasswordViewController: UIViewController {
             return
         }
         
-        print("da vo day")
+        //print("da vo day")
         self.firebaseAuthServices.resetPass(password: newPassword) { (status) in
             print(status)
         }

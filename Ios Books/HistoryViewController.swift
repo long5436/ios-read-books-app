@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController, UITabBarControllerDelegate {
+class HistoryViewController: UIViewController {
     //MARK: Propperties
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var bookName: UILabel!
@@ -21,6 +21,7 @@ class HistoryViewController: UIViewController, UITabBarControllerDelegate {
     var userUid: String?
     var book: Book?
     var page: Int?
+    var firstLoad: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +43,15 @@ class HistoryViewController: UIViewController, UITabBarControllerDelegate {
                 self.getBook(userUid: self.firebaseAuthService.getUserUid())
                 self.userUid = self.firebaseAuthService.getUserUid()
             } else {
-                self.showAlert()
+                if self.firstLoad {
+                    self.showAlert()
+                } else {
+                    self.stackView.isHidden = true
+                    self.btnReadBookContinue.isHidden = true
+                    self.noHistoryLabel.isHidden = false
+                }
             }
+            self.firstLoad = false
         }
         
         // bo cong nut
@@ -52,43 +60,57 @@ class HistoryViewController: UIViewController, UITabBarControllerDelegate {
         
         // lam title chu bu
         navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarController?.delegate = self
+        //tabBarController?.delegate = self
         
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
-        //print(tabBarController.selectedIndex)
-        
-        if tabBarController.selectedIndex == 2 {
-            // kiem trang dang nhap
-            //            let uid = self.firebaseAuthService.getUserUid()
-            //            if !uid.isEmpty {
-            //                self.getBook(userUid: uid)
-            //            }
-            //            else {
-            //                self.stackView.isHidden = true
-            //                self.btnReadBookContinue.isHidden = true
-            //                self.noHistoryLabel.isHidden = false
-            //                self.showAlert()
-            //            }
-            
-            // kiem tra dang nhap
-            firebaseAuthService.checkLogin { status in
-                
-                print(status)
-                if status {
-                    let uid = self.firebaseAuthService.getUserUid()
-                    self.getBook(userUid: uid)
-                } else {
-                    self.stackView.isHidden = true
-                    self.btnReadBookContinue.isHidden = true
-                    self.noHistoryLabel.isHidden = false
-                    self.showAlert()
-                }
-            }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // kiem trang dang nhap
+        let uid = self.firebaseAuthService.getUserUid()
+        if !uid.isEmpty {
+            self.getBook(userUid: uid)
+        }
+        else {
+            self.stackView.isHidden = true
+            self.btnReadBookContinue.isHidden = true
+            self.noHistoryLabel.isHidden = false
+            self.showAlert()
         }
     }
+    
+    //    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    //        print("da nhan \(tabBarController.selectedIndex)")
+    //        if tabBarController.selectedIndex == 2 {
+    //            // kiem trang dang nhap
+    //            let uid = self.firebaseAuthService.getUserUid()
+    //            if !uid.isEmpty {
+    //                self.getBook(userUid: uid)
+    //            }
+    //            else {
+    //                self.stackView.isHidden = true
+    //                self.btnReadBookContinue.isHidden = true
+    //                self.noHistoryLabel.isHidden = false
+    //                self.showAlert()
+    //            }
+    
+    // kiem tra dang nhap
+    //            firebaseAuthService.checkLogin { status in
+    //
+    //                print(status)
+    //                if status {
+    //                    let uid = self.firebaseAuthService.getUserUid()
+    //                    self.getBook(userUid: uid)
+    //                } else {
+    //                    self.stackView.isHidden = true
+    //                    self.btnReadBookContinue.isHidden = true
+    //                    self.noHistoryLabel.isHidden = false
+    //                    self.showAlert()
+    //                    print("da goi lai")
+    //                }
+    //            }
+    //        }
+    //    }
     
     func getBook(userUid: String, loadBook: Bool = true) {
         self.firebaseService.getHistory(userUid: userUid) { bookId, page in
