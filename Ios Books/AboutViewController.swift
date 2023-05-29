@@ -48,9 +48,9 @@ class AboutViewController: UIViewController {
     
     // Thay doi noi dung nut back o man hinh tiep theo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let backItem = UIBarButtonItem()
-//        backItem.title = "Trở về"
-//        navigationItem.backBarButtonItem = backItem
+        let backItem = UIBarButtonItem()
+        backItem.title = self.book.getName()
+        navigationItem.backBarButtonItem = backItem
 //        
         // Lay Destination
         if let destination = segue.destination as? ReadBookViewController {
