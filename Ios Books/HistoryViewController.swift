@@ -194,10 +194,11 @@ class HistoryViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     // Thay doi noi dung nut back o man hinh tiep theo
     override func prepare(for segue: UIStoryboardSegue,  sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Lịch sử"
-        navigationItem.backBarButtonItem = backItem
-        
+        if let book = self.book {
+            let backItem = UIBarButtonItem()
+            backItem.title = book.getName()
+            navigationItem.backBarButtonItem = backItem
+        }
         // Lay Destination
         if let destination = segue.destination as? ReadBookViewController {
             destination.book = self.book
